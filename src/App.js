@@ -1,6 +1,7 @@
 import Login from "./user/login/login";
 import NavbarUser from "./components/navbar_user";
 import SelectDate from "./user/select_date/select_date.js";
+import Steps from "./user/steps/steps";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,15 @@ function App() {
             <>
               <NavbarUser />
               <SelectDate />
+            </>
+          }
+        />
+        <Route
+          path="/steps"
+          element={
+            <>
+              <NavbarUser />
+              <Steps />
             </>
           }
         />
