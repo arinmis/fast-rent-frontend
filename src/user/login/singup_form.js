@@ -1,4 +1,4 @@
-import Modal from "../../node_modules/flowbite/src/components/modal";
+import Modal from "flowbite/src/components/modal";
 
 const SingupForm = (props) => {
   const showSingupModel = () => {
