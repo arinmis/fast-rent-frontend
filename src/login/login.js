@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
 import LoginForm from "./login_form";
 import SingupForm from "./singup_form";
 
