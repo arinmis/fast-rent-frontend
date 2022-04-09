@@ -56,7 +56,7 @@ const Steps = () => {
         {step === 1 ? (
           <SelectCar setStep={setStep} />
         ) : step === 2 ? (
-          <RentOverview />
+          <RentOverview setStep={setStep} />
         ) : (
           <Payment />
         )}
