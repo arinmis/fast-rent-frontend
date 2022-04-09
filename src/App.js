@@ -4,6 +4,7 @@ import SelectDate from "./user/select_date/select_date.js";
 import Steps from "./user/steps/steps";
 import Reservations from "./user/reservations/reservations";
 import Rents from "./user/rents/rents";
+import Settings from "./user/settings/settings";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -45,6 +46,15 @@ function App() {
             <>
               <NavbarUser />
               <Reservations />
+            </>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <>
+              <NavbarUser />
+              <Settings />
             </>
           }
         />

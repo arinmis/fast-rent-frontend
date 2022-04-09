@@ -174,6 +174,7 @@ const SingupForm = (props) => {
                 </button>
               </div>
             </form>
+
           </div>
         </div>
       </div>
