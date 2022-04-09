@@ -1,17 +1,18 @@
 import logo from "../assets/logo.png";
 import { UserCircleIcon } from "@heroicons/react/solid";
+import { Link } from "react-router-dom";
 // see: https://heroicons.com/
 
 const NavbarUser = () => {
   return (
     <nav class="bg-sky-200 border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-800">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
-        <a href="https://flowbite.com" class="flex items-center">
+        <Link to="/" class="flex items-center">
           <img src={logo} class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">
             FastRent
           </span>
-        </a>
+        </Link>
         <div></div>
 
         <div class="flex items-center md:order-2">
@@ -95,7 +96,7 @@ const NavbarUser = () => {
             <li>
               <a
                 href="#1"
-                class="block py-2 pr-4 pl-3 text-black bg-sky-200 rounded md:bg-transparent md:text-sky-700 md:p-0 dark:text-black"
+                class="text-base block py-2 pr-4 pl-3 text-black border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700"
                 aria-current="page"
               >
                 Rents
@@ -104,7 +105,7 @@ const NavbarUser = () => {
             <li>
               <a
                 href="#1"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700"
+                class="text-base block py-2 pr-4 pl-3 text-black border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Reservations
               </a>
