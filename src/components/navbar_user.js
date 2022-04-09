@@ -4,14 +4,16 @@ import { UserCircleIcon } from "@heroicons/react/solid";
 
 const NavbarUser = () => {
   return (
-    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+    <nav class="bg-sky-200 border-gray-200 px-2 sm:px-4 py-2.5  dark:bg-gray-800">
       <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="https://flowbite.com" class="flex items-center">
           <img src={logo} class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+          <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-black">
             FastRent
           </span>
         </a>
+        <div></div>
+
         <div class="flex items-center md:order-2">
           <button
             type="button"
@@ -21,11 +23,11 @@ const NavbarUser = () => {
             data-dropdown-toggle="dropdown"
           >
             <span class="sr-only">Open user menu</span>
-            <UserCircleIcon className="h-10 w-10 text-gray-500" />
+            <UserCircleIcon className="h-10 w-10 text-white	" />
           </button>
 
           <div
-            class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+            class="w-48  bg-sky-200 text-center hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
             id="dropdown"
             data-popper-reference-hidden=""
             data-popper-escaped=""
@@ -35,7 +37,7 @@ const NavbarUser = () => {
               <li>
                 <a
                   href="#j"
-                  class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  class="text-lg block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black"
                 >
                   Settings
                 </a>
@@ -43,7 +45,7 @@ const NavbarUser = () => {
               <li>
                 <a
                   href="#4"
-                  class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  class="text-lg block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-black"
                 >
                   Log out
                 </a>
@@ -93,7 +95,7 @@ const NavbarUser = () => {
             <li>
               <a
                 href="#1"
-                class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                class="block py-2 pr-4 pl-3 text-black bg-sky-200 rounded md:bg-transparent md:text-sky-700 md:p-0 dark:text-black"
                 aria-current="page"
               >
                 Rents
@@ -102,7 +104,7 @@ const NavbarUser = () => {
             <li>
               <a
                 href="#1"
-                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-sky-700 md:p-0 dark:text-gray-400 md:dark:hover:text-black dark:hover:bg-gray-700 dark:hover:text-black md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Reservations
               </a>
