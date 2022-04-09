@@ -17,7 +17,7 @@ const RentOverview = (props) => {
     <Car
       carImage={MockCar.carImage}
       carName={MockCar.carName}
-      features={MockCar.features}
+      features={MockCar.features.slice(0,2)}
       action={goPrevStep}
       actionName={"Change Car"}
     />

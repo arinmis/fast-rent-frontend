@@ -13,8 +13,6 @@ const SelectCar = (props) => {
       carImage={MockCar.carImage}
       carName={MockCar.carName}
       features={MockCar.features}
-      priceDaily={MockCar.priceDaily}
-      priceTotal={MockCar.priceTotal}
       action={goNextStep}
       actionName={"Rent"}
     />
