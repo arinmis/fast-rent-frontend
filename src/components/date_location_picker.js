@@ -9,12 +9,12 @@ const DateLocationPicker = () => {
   const [endDate, setEndDate] = useState(new Date());
   const navigate = useNavigate();
   return (
-    <div className="grid gap-4 grid-rows-3">
-      <div className="grid gap-4 sm:grid-cols-2 grid-cols-1">
+    <div className="grid gap-5 grid-rows-3">
+      <div className="grid gap-10 sm:grid-cols-2 grid-cols-1">
         <div className="flex items-center">
           <label
             for="pickupOffice"
-            class="block mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
+            class="block pl-2 border-sky-300 mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Pick-up Office
           </label>
@@ -23,29 +23,29 @@ const DateLocationPicker = () => {
             name="pickupOffice"
             id="pickupOffice"
             placeholder="Antalya"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           />
         </div>
         <div className="flex">
           <label
             for="pickupDate"
-            class="block mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
+            class="block pl-2 border-sky-300 mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Pick-up Date
           </label>
           <DatePicker
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 grid-cols-1">
+      <div className="grid gap-10 sm:grid-cols-2 grid-cols-1">
         <div className="flex">
           <label
             for="pickupOffice"
-            class="block mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
+            class="block mb-2 pl-2 border-sky-300 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Return Office
           </label>
@@ -54,13 +54,13 @@ const DateLocationPicker = () => {
             name="pickupOffice"
             id="pickupOffice"
             placeholder="Antalya"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-black"
+            class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           />
         </div>
         <div className="flex">
           <label
             for="pickupDate"
-            class="block mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
+            class="block mb-2 pl-2 border-sky-300 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Return Date
           </label>
