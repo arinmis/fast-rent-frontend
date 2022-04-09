@@ -1,26 +1,22 @@
 import CarFilter from "../../components/car_filter";
 import Car from "../../components/car";
-import logo from "../../assets/logo.png";
+import MockCar from "../../assets/mock_car";
 
 const SelectCar = (props) => {
-  const carData = {
-    carImage: logo,
-    carName: "Audi A1",
-    features: ["Automatic", "Gas"],
-    priceDaily: 30,
-    priceTotal: 60,
-  };
-
   /* create mock cars */
+  const goNextStep = () => {
+    props.setStep(2);
+  };
   const carAmount = 10;
   const cars = Array.from(Array(carAmount).keys()).map((item) => (
     <Car
-      carImage={carData.carImage}
-      carName={carData.carName}
-      features={carData.features}
-      priceDaily={carData.priceDaily}
-      priceTotal={carData.priceTotal}
-      setStep={props.setStep}
+      carImage={MockCar.carImage}
+      carName={MockCar.carName}
+      features={MockCar.features}
+      priceDaily={MockCar.priceDaily}
+      priceTotal={MockCar.priceTotal}
+      action={goNextStep}
+      actionName={"Rent"}
     />
   ));
   return (
