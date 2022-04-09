@@ -18,10 +18,8 @@ const Steps = () => {
             onClick={() => handleStepClick(1)}
             type="button"
             className={
-              (step === 1
-                ? "bg-blue-700 text-white "
-                : " bg-white-700 text-blue ") +
-              "p-2.5 border border-blue-700 rounded-full "
+              (step === 1 ? "bg-sky-200 " : " bg-white-700") +
+              "p-2.5 border border-sky-700 rounded-full "
             }
           >
             Select Car
@@ -30,10 +28,8 @@ const Steps = () => {
             onClick={() => handleStepClick(2)}
             type="button"
             className={
-              (step === 2
-                ? "bg-blue-700 text-white "
-                : " bg-white-700 text-blue ") +
-              " p-2.5 border border-blue-700 rounded-full "
+              (step === 2 ? "bg-sky-200" : " bg-white-700") +
+              " p-2.5 border border-sky-700 rounded-full "
             }
           >
             Rent Overview
@@ -42,10 +38,8 @@ const Steps = () => {
             onClick={() => handleStepClick(3)}
             type="button"
             className={
-              (step === 3
-                ? "bg-blue-700 text-white "
-                : " bg-white-700 text-blue ") +
-              " p-2.5 border border-blue-700 rounded-full "
+              (step === 3 ? "bg-sky-200" : " bg-white-700") +
+              " p-2.5 border border-sky-700 rounded-full "
             }
           >
             Payment Information
