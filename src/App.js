@@ -1,4 +1,4 @@
-import Login from "./user/login/login";
+import Login from "./login/login";
 import NavbarUser from "./components/navbar_user";
 import SelectDate from "./user/select_date/select_date.js";
 import Steps from "./user/steps/steps";

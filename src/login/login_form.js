@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { Link } from "react-router-dom";
-import ErrorText from "../../components/error_text";
+import ErrorText from "../components/error_text";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {

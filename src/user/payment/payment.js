@@ -6,8 +6,8 @@ const Payment = () => {
     <div className="flex justify-center items-center  mb-10 sm:mb-40 mx-5">
       <div className="text-center divide-y p-10 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8 block  max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <h1 className="font-bold text-2xl">Total Price: 60$</h1>
-        <div className="grid grid-row">
-          <div className="flex justify-between items-center pt-6">
+        <div className="grid grid-row ">
+          <div className="flex justify-between  items-center pt-6 ">
             <label
               for="name"
               class=" col-span2 text-base block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -68,9 +68,12 @@ const Payment = () => {
             />
           </div>
           <div className="flex justify-end">
-            <button 
-            onClick={() => {navigate("/rents")}}
-            className="max-h-12 text-black bg-sky-200 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-200 dark:focus:ring-sky-800">
+            <button
+              onClick={() => {
+                navigate("/rents");
+              }}
+              className="max-h-12 text-black bg-sky-200 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-200 dark:focus:ring-sky-800"
+            >
               Pay
             </button>
           </div>
