@@ -17,7 +17,7 @@ const Navbar = (props) => {
 
   return (
     <nav class="bg-sky-200 w-screen ">
-      <div className="main-content container flex flex-wrap justify-between items-center mx-auto">
+      <div className="nav-content container flex flex-wrap justify-between items-center mx-auto">
         <NavLink to="" className="flex items-center">
           <img src={logo} className="mr-3  h-12" alt="FastRent logo" />
           FastRent
