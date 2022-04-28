@@ -4,7 +4,7 @@
 
 @layer components {
   .layout {
-    @apply h-screen flex justify-center;
+    @apply min-h-screen flex flex-col items-center;
   }
   .main-content {
     @apply sm:w-8/12 w-11/12;

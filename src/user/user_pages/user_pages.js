@@ -1,11 +1,11 @@
-import { Routes, Route, Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavbarUser from "../../components/navbar_user";
 
 const UserPages = (props) => {
   return (
     <>
-      <NavbarUser />
       <div className="layout">
+      <NavbarUser />
         <div className="main-content">
           <Outlet />
         </div>
