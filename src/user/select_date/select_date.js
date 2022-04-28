@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const SelectDate = () => {
   const navigate = useNavigate();
   return (
-    <div className="grid grid-rows justify-end items-center">
+    <div className="grid grid-rows justify-center items-center">
       <DateLocationPicker />
       <div className="flex justify-end mt-4 ">
         <button

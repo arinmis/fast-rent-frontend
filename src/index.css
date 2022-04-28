@@ -9,8 +9,11 @@
   .main-content {
     @apply sm:w-8/12 w-11/12 sm:mt-10 mt-2;
   }
+  .nav-content {
+    @apply sm:w-8/12 w-11/12 py-3 max-h-screen;
+  }
   .card {
-    @apply p-3 w-fit h-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
+    @apply p-3 w-fit h-fit  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
   }
   .input-layout {
     @apply mb-2 grid w-64 justify-center;
