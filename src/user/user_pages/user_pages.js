@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
-import NavbarUser from "../../components/navbar_user";
+import Navbar from "../../components/navbar";
 
 const UserPages = (props) => {
+  console.log("props", props);
   return (
     <>
       <div className="layout">
-      <NavbarUser />
+        <Navbar paths={props.paths} />
         <div className="main-content">
           <Outlet />
         </div>
