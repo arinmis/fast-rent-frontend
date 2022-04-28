@@ -17,5 +17,9 @@ npm run start
 
 ### About Layout
 
-1. Reponsive Design
+1. CSS  
+   Tailwindcss is used
+2. Reponsive Design  
    Just considered small and other devices. Layout will change according to tailwindcss small device break point.
+3. Icons  
+   https://heroicons.com/

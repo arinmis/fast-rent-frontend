@@ -9,10 +9,11 @@ import UserPages from "./user/user_pages/user_pages";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  const pathOfPagesUser = ["rents", "reservations"];
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<UserPages />}>
+        <Route path="/" element={<UserPages paths={pathOfPagesUser} />}>
           <Route path="" element={<SelectDate />} />
           <Route path="steps" element={<Steps />} />
           <Route path="rents" element={<Rents />} />
