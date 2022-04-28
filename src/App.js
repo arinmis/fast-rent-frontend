@@ -1,10 +1,10 @@
 import Login from "./login/login";
-import NavbarUser from "./components/navbar_user";
 import SelectDate from "./user/select_date/select_date.js";
 import Steps from "./user/steps/steps";
 import Reservations from "./user/reservations/reservations";
 import Rents from "./user/rents/rents";
 import Settings from "./user/settings/settings";
+import UserPages from "./user/user_pages/user_pages";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -12,52 +12,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <NavbarUser />
-              <SelectDate />
-            </>
-          }
-        />
-        <Route
-          path="/steps"
-          element={
-            <>
-              <NavbarUser />
-              <Steps />
-            </>
-          }
-        />
+        <Route path="/" element={<UserPages />}>
+          <Route path="" element={<SelectDate />} />
+          <Route path="steps" element={<Steps />} />
+          <Route path="rents" element={<Rents />} />
+          <Route path="reservations" element={<Reservations />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/rents"
-          element={
-            <>
-              <NavbarUser />
-              <Rents />
-            </>
-          }
-        />
-        <Route
-          path="/reservations"
-          element={
-            <>
-              <NavbarUser />
-              <Reservations />
-            </>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <>
-              <NavbarUser />
-              <Settings />
-            </>
-          }
-        />
         <Route
           path="*"
           element={

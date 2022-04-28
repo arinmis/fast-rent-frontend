@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .layout {
+    @apply h-screen flex justify-center;
+  }
+  .main-content {
+    @apply sm:w-8/12 w-11/12;
+  }
+  .card {
+    @apply p-2 rounded-lg border border-gray-500 shadow-md;
+  }
+}

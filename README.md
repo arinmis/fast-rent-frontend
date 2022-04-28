@@ -14,3 +14,8 @@ Clone the repository and run these commands.
 npm  install
 npm run start
 ```
+
+### About Layout
+
+1. Reponsive Design
+   Just considered small and other devices. Layout will change according to tailwindcss small device break point.
