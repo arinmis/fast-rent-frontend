@@ -23,11 +23,7 @@ const SingupForm = (props) => {
   return (
     <>
       <div class="flex justify-end text-sm font-medium text-gray-500 dark:text-gray-300">
-        <button
-          class="block text-black bg-sky-200 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-200 dark:focus:ring-sky-800"
-          type="submit"
-          onClick={showSingupModel}
-        >
+        <button className="btn-primary" type="submit" onClick={showSingupModel}>
           Signup
         </button>
       </div>
@@ -168,13 +164,12 @@ const SingupForm = (props) => {
                 <button
                   data-modal-toggle="signupModal"
                   onClick={handleSingup}
-                  class="text-black bg-sky-200 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-200 dark:focus:ring-sky-800"
+                  className="btn-primary"
                 >
                   Singup
                 </button>
               </div>
             </form>
-
           </div>
         </div>
       </div>

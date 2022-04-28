@@ -19,7 +19,7 @@ const SelectCar = (props) => {
   ));
   return (
     <div className="grid grid-cols-1  sm:grid-cols-3">
-      <div className="sm:block hidden ">
+      <div className="sm:block hidden">
         <CarFilter />
       </div>
       <div className="col-span-3 sm:col-span-2 ">

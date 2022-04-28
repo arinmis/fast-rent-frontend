@@ -7,9 +7,24 @@
     @apply min-h-screen flex flex-col items-center;
   }
   .main-content {
-    @apply sm:w-8/12 w-11/12;
+    @apply sm:w-8/12 w-11/12 sm:mt-10 mt-2;
   }
   .card {
-    @apply p-2 rounded-lg border border-gray-500 shadow-md;
+    @apply p-3 w-fit h-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
+  }
+  .input-layout {
+    @apply mb-2 grid w-64 justify-center;
+  }
+  .btn-primary {
+    @apply text-gray-900 bg-white border border-gray-300 focus:outline-none
+     hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg 
+     text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600
+      dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700;
+  }
+  .link-primary {
+    @apply hover:text-slate-700;
+  }
+  .vertical-bar {
+    @apply mb-2 h-10 pl-2 flex w-24 items-center border-sky-300 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300;
   }
 }
