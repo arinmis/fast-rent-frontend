@@ -1,12 +1,22 @@
 import DateLocationPicker from "../../components/date_location_picker";
+import { useNavigate } from "react-router-dom";
 
 const SelectDate = () => {
+  const navigate = useNavigate();
   return (
-      <div className="m-10 sm:m-40  flex justify-center items-center ">
-        <div className="divide-y p-10 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8 block  w-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-          <DateLocationPicker />
-        </div>
+    <div className="grid grid-rows justify-end items-center">
+      <DateLocationPicker />
+      <div className="flex justify-end mt-4 ">
+        <button
+          onClick={() => {
+            navigate("/steps");
+          }}
+          class="btn-primary w-fit"
+        >
+          Rent
+        </button>
       </div>
+    </div>
   );
 };
 

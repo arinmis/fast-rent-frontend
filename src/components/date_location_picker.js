@@ -7,15 +7,11 @@ import "react-datepicker/dist/react-datepicker.css";
 const DateLocationPicker = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const navigate = useNavigate();
   return (
-    <div className="grid gap-5 grid-rows-3">
+    <div className="card  grid gap-5 grid-rows">
       <div className="grid gap-10 sm:grid-cols-2 grid-cols-1">
         <div className="flex items-center">
-          <label
-            for="pickupOffice"
-            class="block pl-2 border-sky-300 mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
+          <label for="pickupOffice" className="vertical-bar">
             Pick-up Office
           </label>
           <input
@@ -23,30 +19,23 @@ const DateLocationPicker = () => {
             name="pickupOffice"
             id="pickupOffice"
             placeholder="Antalya"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           />
         </div>
-        <div className="flex">
-          <label
-            for="pickupDate"
-            class="block pl-2 border-sky-300 mb-2 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
+        <div className="flex items-center">
+          <label for="pickupDate" className="vertical-bar">
             Pick-up Date
           </label>
           <DatePicker
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            wrapperClassName="form-input"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />
         </div>
       </div>
 
-      <div className="grid gap-10 sm:grid-cols-2 grid-cols-1">
-        <div className="flex">
-          <label
-            for="pickupOffice"
-            class="block mb-2 pl-2 border-sky-300 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
+      <div className="ralative grid gap-10 sm:grid-cols-2 grid-cols-1">
+        <div className="flex items-center">
+          <label for="pickupOffice" className="vertical-bar">
             Return Office
           </label>
           <input
@@ -54,31 +43,18 @@ const DateLocationPicker = () => {
             name="pickupOffice"
             id="pickupOffice"
             placeholder="Antalya"
-            class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           />
         </div>
-        <div className="flex">
-          <label
-            for="pickupDate"
-            class="block mb-2 pl-2 border-sky-300 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
+        <div className="flex items-center">
+          <label for="pickupDate" className="vertical-bar">
             Return Date
           </label>
           <DatePicker
+            wrapperClassName="form-input"
             selected={endDate}
             onChange={(date) => setEndDate(date)}
           />
         </div>
-      </div>
-      <div className="flex justify-end items-center">
-        <button
-          onClick={() => {
-            navigate("/steps");
-          }}
-          class=" text-black bg-sky-200 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-200 dark:focus:ring-sky-800"
-        >
-          Rent
-        </button>
       </div>
     </div>
   );

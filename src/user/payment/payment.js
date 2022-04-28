@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
+
 const Payment = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex justify-center items-center  mb-10 sm:mb-40 mx-5">
-      <div className="text-center divide-y p-10 pb-4 space-y-6 lg:px-8 sm:pb-6 xl:pb-8 block  max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div className="text-center divide-y card">
         <h1 className="font-bold text-2xl">Total Price: 60$</h1>
         <div className="grid grid-row ">
           <div className="flex justify-between  items-center pt-6 ">

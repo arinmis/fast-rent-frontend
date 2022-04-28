@@ -6,18 +6,18 @@ const Login = () => {
   return (
     <div className="layout">
       <div className="main-content">
-        <div className="m-2 md:m-10 grid-cols-1 text-center">
-          <p className="text-6xl md:text-9xl font-bold">FastRent</p>
+        <div className="mb-2 md:m-10 grid-cols-1 text-center">
+          <p className="text-6xl md:text-8xl text-slate-600">FastRent</p>
         </div>
 
-        <div className="grid gap-y-20 grid-cols-1 md:grid-cols-2 content-center ">
+        <div className="grid gap-y-5 grid-cols-1 md:grid-cols-2 content-center ">
           <div className="flex justify-end">
             <img className="hidden h-96 sm:block" src={logo} alt="logo" />
           </div>
           <div className="flex justify-center items-center ">
-            <div className="divide-y card">
+            <div className="grid gap-5 divide-y card">
               <LoginForm />
-              <div className="pt-6">
+              <div className="pt-5">
                 <SingupForm />
               </div>
             </div>
