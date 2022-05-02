@@ -7,13 +7,13 @@
     @apply min-h-screen flex flex-col items-center;
   }
   .main-content {
-    @apply sm:w-8/12 w-11/12 sm:mt-10 mt-2;
+    @apply sm:w-8/12 w-11/12 mt-10;
   }
   .nav-content {
     @apply sm:w-8/12 w-11/12 py-3 max-h-screen;
   }
   .card {
-    @apply p-3 w-fit h-fit  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
+    @apply p-3 w-fit h-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
   }
   /* for both: input and the label */
   .input-layout {
@@ -33,5 +33,8 @@
   }
   .vertical-bar {
     @apply mb-2 h-10 pl-2 flex w-24 items-center border-sky-300 border-l-4 text-sm font-medium text-gray-900 dark:text-gray-300;
+  }
+  .modal {
+    @apply p-4 sm:w-5/12  w-3/12;
   }
 }

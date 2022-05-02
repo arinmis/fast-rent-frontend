@@ -6,8 +6,8 @@ const DateLocationPicker = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   return (
-    <div className="card  grid gap-5 grid-rows">
-      <div className="grid gap-10 sm:grid-cols-2 grid-cols-1">
+    <div className="card  grid gap-5  grid-rows">
+      <div className="grid gap-5 sm:grid-cols-2 grid-cols-1">
         <div className="flex items-center">
           <label for="pickupOffice" className="vertical-bar">
             Pick-up Office
@@ -32,7 +32,7 @@ const DateLocationPicker = () => {
         </div>
       </div>
 
-      <div className="ralative grid gap-10 sm:grid-cols-2 grid-cols-1">
+      <div className="ralative grid gap-5 sm:grid-cols-2 grid-cols-1">
         <div className="flex items-center">
           <label for="pickupOffice" className="vertical-bar">
             Return Office
