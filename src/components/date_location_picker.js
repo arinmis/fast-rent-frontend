@@ -16,6 +16,7 @@ const DateLocationPicker = () => {
             type="text"
             name="pickupOffice"
             id="pickupOffice"
+            className="form-input"
             placeholder="Antalya"
           />
         </div>
@@ -24,7 +25,7 @@ const DateLocationPicker = () => {
             Pick-up Date
           </label>
           <DatePicker
-            wrapperClassName="form-input"
+            className="form-input"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
           />
@@ -39,6 +40,7 @@ const DateLocationPicker = () => {
           <input
             type="text"
             name="pickupOffice"
+            className="form-input"
             id="pickupOffice"
             placeholder="Antalya"
           />
@@ -48,7 +50,7 @@ const DateLocationPicker = () => {
             Return Date
           </label>
           <DatePicker
-            wrapperClassName="form-input"
+            className="form-input"
             selected={endDate}
             onChange={(date) => setEndDate(date)}
           />
