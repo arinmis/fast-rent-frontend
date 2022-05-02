@@ -13,7 +13,7 @@ const Steps = () => {
   return (
     <div className="grid grid-row-2 col-span-2 ">
       <div className="flex justify-center">
-        <div className="grid grid-cols-3 gap-3 md:gap-40 sm:gap-20 my-5 sm:my-20 border-b-4 pb-2 sm:pb-5">
+        <div className="grid grid-cols-3 gap-3 md:gap-40 sm:gap-20 mb-5 sm:mb-20 border-b-4 pb-2 sm:pb-5">
           <button
             onClick={() => handleStepClick(1)}
             type="button"

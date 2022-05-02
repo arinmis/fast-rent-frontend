@@ -15,8 +15,12 @@
   .card {
     @apply p-3 w-fit h-fit  bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
   }
+  /* for both: input and the label */
   .input-layout {
-    @apply mb-2 grid w-64 justify-center;
+    @apply mb-2 grid w-full justify-center;
+  }
+  .form-input {
+    @apply w-full;
   }
   .btn-primary {
     @apply text-gray-900 bg-white border border-gray-300 focus:outline-none

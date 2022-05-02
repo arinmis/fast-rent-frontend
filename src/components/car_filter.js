@@ -1,27 +1,14 @@
 const CarFilter = () => {
   return (
     <div className="flex justify-center items-center mb-40">
-      <div className="divide-y p-5  space-y-6 lg:px-8 sm:pb-6 xl:pb-8 block  max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-        <div className="grid grid-cols-3 gap-2 flex items-center">
-          <h1 className="text-2xl">Price</h1>
-          <input
-            type="number"
-            id="large-input"
-            class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
-            placeholder="min"
-          />
-          <input
-            type="number"
-            id="large-input"
-            class="block p-4 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-md focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
-            placeholder="max"
-          />
-        </div>
-        <div>
-          <select
-            id="countries"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
-          >
+      <div className="divide-y card grid grid-rows gap-10 ">
+        <div className="grid grid-rows-2 gap-2 items-center">
+          <div className="flex justify-center">
+            <h1 className="text-2xl mx-2">Price</h1>
+            <input type="number" className="w-24" placeholder="min" />
+            <input type="number" className="w-24" placeholder="max" />
+          </div>
+          <select id="countries">
             <option>Ascending</option>
             <option>Descending</option>
           </select>
@@ -31,63 +18,27 @@ const CarFilter = () => {
           <h1 className="text-2xl">Fuel Type</h1>
           <div className="grid grid-cols-2">
             <div>
-              <input
-                id="checkbox-1"
-                aria-describedby="checkbox-1"
-                type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Gas
-              </label>
+              <input type="checkbox" />
+              <label for="checkbox-1">Gas</label>
             </div>
             <div>
-              <input
-                id="checkbox-1"
-                aria-describedby="checkbox-1"
-                type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Diessel
-              </label>
+              <input type="checkbox" />
+              <label for="checkbox-1">Diessel</label>
             </div>
           </div>
 
           <div className="grid grid-cols-2">
             <div>
-              <input
-                id="checkbox-1"
-                aria-describedby="checkbox-1"
-                type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Electric
-              </label>
+              <input type="checkbox" />
+              <label for="checkbox-1">Electric</label>
             </div>
             <div>
               <input
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Hybrit
-              </label>
+              <label for="checkbox-1">Hybrit</label>
             </div>
           </div>
         </div>
@@ -100,28 +51,16 @@ const CarFilter = () => {
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Toyota
-              </label>
+              <label for="checkbox-1">Toyota</label>
             </div>
             <div>
               <input
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Tesla
-              </label>
+              <label for="checkbox-1">Tesla</label>
             </div>
           </div>
 
@@ -131,28 +70,16 @@ const CarFilter = () => {
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Audi
-              </label>
+              <label for="checkbox-1">Audi</label>
             </div>
             <div>
               <input
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                BMW
-              </label>
+              <label for="checkbox-1">BMW</label>
             </div>
           </div>
         </div>
@@ -165,28 +92,16 @@ const CarFilter = () => {
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Manual
-              </label>
+              <label for="checkbox-1">Manual</label>
             </div>
             <div>
               <input
                 id="checkbox-1"
                 aria-describedby="checkbox-1"
                 type="checkbox"
-                class="w-4 h-4 text-sky-600 bg-gray-100 rounded border-gray-300 focus:ring-sky-500 dark:focus:ring-sky-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
-              <label
-                for="checkbox-1"
-                class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Automatic
-              </label>
+              <label for="checkbox-1">Automatic</label>
             </div>
           </div>
         </div>
