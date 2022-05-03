@@ -79,7 +79,6 @@ const SingupForm = (props) => {
                   />
                 </div>
               </div>
-
               <div className="grid grid-cols-2 gap-3">
                 <div class="mb-2 input-layout">
                   <label for="email">Email</label>
@@ -101,7 +100,6 @@ const SingupForm = (props) => {
                   />
                 </div>
               </div>
-
               <div className="grid grid-cols-2 gap-3">
                 <div class="mb-2 input-layout">
                   <label for="phone-number">Phone Number</label>
@@ -124,7 +122,6 @@ const SingupForm = (props) => {
                   />
                 </div>
               </div>
-
               <div className="flex justify-center mb-3">
                 <button
                   data-modal-toggle="signupModal"
