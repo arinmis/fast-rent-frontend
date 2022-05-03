@@ -55,7 +55,7 @@ const Payment = () => {
               onClick={() => {
                 navigate("/rents");
               }}
-              className="max-h-12 text-black bg-sky-200 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-sky-600 dark:hover:bg-sky-200 dark:focus:ring-sky-800"
+              className="btn-primary"
             >
               Pay
             </button>
