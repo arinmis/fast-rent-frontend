@@ -1,6 +1,7 @@
 import logo from "./logo.png";
 
-const MockCar = {
+const MockCar = 
+{
   carImage: logo,
   carName: "Audi A1",
   features: ["Automatic", "Gas", "Daily Price: 30$", "Total Price: 60$"],

@@ -13,11 +13,14 @@
     @apply sm:w-8/12 w-11/12 py-3 max-h-screen;
   }
   .card {
-    @apply p-3 w-fit h-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
+    @apply p-6 w-fit h-fit bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700;
   }
   /* for both: input and the label */
   .input-layout {
     @apply mb-2 grid w-full justify-center;
+  }
+  .checkbox-layout {
+    @apply grid grid-cols-3 justify-items-center items-center;
   }
   .form-input {
     @apply w-full;

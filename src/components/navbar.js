@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png";
-import { UserCircleIcon, MenuIcon } from "@heroicons/react/solid";
+import { UserCircleIcon, MenuIcon, MenuAlt3Icon } from "@heroicons/react/solid";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 // see: https://heroicons.com/
@@ -16,7 +16,7 @@ const Navbar = (props) => {
   });
 
   return (
-    <nav class="bg-sky-200 w-screen ">
+    <nav class="bg-sky-200 w-screen text-2xl">
       <div className="nav-content container flex flex-wrap justify-between items-center mx-auto">
         <NavLink to="" className="flex items-center">
           <img src={logo} className="mr-3  h-12" alt="FastRent logo" />
@@ -46,7 +46,7 @@ const Navbar = (props) => {
               <UserCircleIcon className="h-10 w-10 text-white	" />
             </button>
             <div
-              className={`w-36 absolute right-0 bg-sky-600 text-center z-50  
+              className={`w-36 absolute right-0 bg-sky-600  text-center z-50  
                 ${isSettingsShown ? "visible" : "invisible"}
                 `}
             >
@@ -67,7 +67,11 @@ const Navbar = (props) => {
                 setIsSmallNavlinkShown(!isSmallNavlinkShown);
               }}
             >
-              <MenuIcon className="h-10 w-10 text-white	" />
+              {isSmallNavlinkShown ? (
+                <MenuAlt3Icon className="h-10 w-10 text-white	" />
+              ) : (
+                <MenuIcon className="h-10 w-10 text-white	" />
+              )}
             </button>
           </div>
         </div>

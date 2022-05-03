@@ -5,68 +5,50 @@ const Payment = () => {
 
   return (
     <div className="flex justify-center items-center  mb-10 sm:mb-40 mx-5">
-      <div className="text-center divide-y card">
-        <h1 className="font-bold text-2xl">Total Price: 60$</h1>
-        <div className="grid grid-row ">
-          <div className="flex justify-between  items-center pt-6 ">
-            <label
-              for="name"
-              class=" col-span2 text-base block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Name Surname
-            </label>
+      <div className="divide-y card ">
+        <div className="text-center">
+          <h1 className="font-bold text-2xl">Total Price: 60$</h1>
+        </div>
+        <div className="grid grid-row  pt-5 mt-2">
+          <div className="input-layout">
+            <label for="name">Name Surname</label>
             <input
               type="text"
-              id="lName"
-              class="w-full col-span-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
+              id="name"
               placeholder="Mustafa Arinmis"
-              required=""
+              required
             />
           </div>
-          <div className="flex justify-between items-center pt-6">
-            <label
-              for="carNumber"
-              class=" col-span2 text-base block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Card Number
-            </label>
+          <div className="input-layout">
+            <label for="carNumber">Card Number</label>
             <input
               type="text"
               id="carNumber"
-              class="w-full col-span-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
-              placeholder="5555 5555 5555 4444"
+              className="form-input"
+              placeholder="5555555555554444"
               required=""
             />
           </div>
-          <div className="flex justify-between items-center pt-6">
-            <label
-              for="carNumber"
-              class=" col-span2 text-base block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Expire Date
-            </label>
-            <input
-              type="text"
-              id="carNumber"
-              class="w-full col-span-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
-              placeholder="11/29"
-              required=""
-            />
-          </div>
-          <div className="flex justify-start items-center pt-6">
-            <label
-              for="carNumber"
-              class=" col-span2 text-base block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              CVV
-            </label>
-            <input
-              type="text"
-              id="carNumber"
-              class="w-24 ml-8 col-span-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-sky-500 dark:focus:border-sky-500"
-              placeholder="11/29"
-              required=""
-            />
+          <div className="grid grid-cols-2 content-start">
+            <div className="input-layout justify-start">
+              <label for="carNumber">Expire Date</label>
+              <input
+                type="text"
+                className="w-24"
+                id="carNumber"
+                placeholder="11/29"
+              />
+            </div>
+            <div className="input-layout justify-start">
+              <label for="carNumber">CVV</label>
+              <input
+                type="text"
+                id="carNumber"
+                placeholder="119"
+                className="w-16"
+                required=""
+              />
+            </div>
           </div>
           <div className="flex justify-end">
             <button
