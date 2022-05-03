@@ -25,7 +25,7 @@ const Reservations = () => {
             console.log("here");
             navigate("/");
           }}
-          class=" text-black mx-5 sm:mx-10 bg-gray-200 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-200 dark:focus:ring-gray-800"
+          className="btn-primary"
         >
           Edit
         </button>
@@ -33,7 +33,7 @@ const Reservations = () => {
           onClick={() => {
             setReservations([]);
           }}
-          class=" text-black  bg-red-200 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-200 dark:focus:ring-red-800"
+          className="btn-primary ml-5"
         >
           Cancel
         </button>
