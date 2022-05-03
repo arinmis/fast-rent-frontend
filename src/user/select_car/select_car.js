@@ -7,16 +7,23 @@ const SelectCar = (props) => {
   const goNextStep = () => {
     props.setStep(2);
   };
+
+  const rentCarButton = (
+    <button onClick={goNextStep} className="btn-primary ml-5">
+      Rent
+    </button>
+  );
+
   const carAmount = 10;
   const cars = Array.from(Array(carAmount).keys()).map((item) => (
     <Car
       carImage={MockCar.carImage}
       carName={MockCar.carName}
       features={MockCar.features}
-      action={goNextStep}
-      actionName={"Rent"}
+      actions={[rentCarButton]}
     />
   ));
+
   return (
     <div className="grid grid-cols-1  sm:grid-cols-3">
       <div className="sm:block hidden">
