@@ -1,6 +1,6 @@
 import Modal from "flowbite/src/components/modal";
 
-const SingupForm = (props) => {
+const AddCar = (props) => {
   const showSingupModel = () => {
     const targetEl = document.getElementById("singupModel");
     const singupModel = new Modal(targetEl);
@@ -23,7 +23,7 @@ const SingupForm = (props) => {
     <>
       <div class="flex justify-end text-sm font-medium text-gray-500 dark:text-gray-300">
         <button className="btn-primary" type="submit" onClick={showSingupModel}>
-          Signup
+          Add a New Car
         </button>
       </div>
       <div
@@ -55,71 +55,39 @@ const SingupForm = (props) => {
               </button>
             </div>
 
-            <form className="px-6 grid grid-rows gap-6">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="mb-2 input-layout">
-                  <label for="fName">First Name</label>
-                  <input
-                    type="text"
-                    id="fName"
-                    className="form-input"
-                    placeholder="Mustafa"
-                    required=""
-                  />
-                </div>
-                <div class="mb-2 input-layout">
-                  <label for="lName">Last Name</label>
-                  <input
-                    type="text"
-                    id="lName"
-                    className="form-input"
-                    placeholder="Arinmis"
-                    required=""
-                  />
-                </div>
+            <form className="px-6 grid grid-rows gap-2">
+              <div className="mb-2 input-layout">
+                <label for="fName">Car Brand</label>
+                <input
+                  type="text"
+                  id="fName"
+                  className="form-input"
+                  placeholder="Toyota"
+                />
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div class="mb-2 input-layout">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="form-input"
-                    placeholder="name@flowbite.com"
-                    required=""
-                  />
-                </div>
-                <div class="mb-2 input-layout">
-                  <label for="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    className="form-input"
-                    required=""
-                  />
-                </div>
+              <div class="mb-2 input-layout">
+                <label for="fName">Car Brand</label>
+                <select value="gas" className="w-full">
+                  <option value="gas">gas</option>
+                  <option value="diessel">diessel</option>
+                  <option value="electric">electric</option>
+                  <option value="hybrit">hybrit</option>
+                </select>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div class="mb-2 input-layout">
-                  <label for="phone-number">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone-number"
-                    className="form-input"
-                    placeholder="+90 543 535 95 24"
-                    required=""
-                  />
-                </div>
-                <div class="mb-2 input-layout">
-                  <label for="ID">ID</label>
-                  <input
-                    type="text"
-                    id="ID"
-                    className="form-input"
-                    placeholder="Arinmis"
-                    required=""
-                  />
-                </div>
+              <div class="mb-2 input-layout">
+                <label for="email">Price per hour</label>
+                <input type="number" className="form-input" placeholder="30" />
+              </div>
+              <div class="mb-2 input-layout">
+                <label for="password">Transmission type</label>
+                <select value="gas" className="w-full">
+                  <option value="gas">Automatic</option>
+                  <option value="diessel">Manual</option>
+                </select>
+              </div>
+              <div class="mb-2 input-layout">
+                <label for="phone-number">Upload car photo</label>
+                <input type="file" id="file-input" name="ImageStyle" />
               </div>
               <div className="flex justify-center mb-3">
                 <button
@@ -127,7 +95,7 @@ const SingupForm = (props) => {
                   onClick={handleSingup}
                   className="btn-primary"
                 >
-                  Singup
+                  Add a New Car
                 </button>
               </div>
             </form>
@@ -137,4 +105,4 @@ const SingupForm = (props) => {
     </>
   );
 };
-export default SingupForm;
+export default AddCar;
