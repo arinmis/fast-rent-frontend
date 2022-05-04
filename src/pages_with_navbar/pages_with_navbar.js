@@ -1,8 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../../components/navbar";
+import Navbar from "../components/navbar";
 
-const UserPages = (props) => {
-  console.log("props", props);
+const PagesWithNavbar = (props) => {
   return (
     <>
       <div className="layout">
@@ -15,4 +14,4 @@ const UserPages = (props) => {
   );
 };
 
-export default UserPages;
+export default PagesWithNavbar;
