@@ -20,6 +20,13 @@ function App() {
           <Route path="reservations" element={<Reservations />} />
           <Route path="settings" element={<Settings />} />
         </Route>
+        <Route path="/manager" element={<UserPages paths={pathOfPagesUser} />}>
+          <Route path="" element={<SelectDate />} />
+          <Route path="steps" element={<Steps />} />
+          <Route path="rents" element={<Rents />} />
+          <Route path="reservations" element={<Reservations />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route
           path="*"
