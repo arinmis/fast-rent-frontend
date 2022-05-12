@@ -1,19 +1,26 @@
 import logo from "../assets/logo.png";
 import { UserCircleIcon, MenuIcon, MenuAlt3Icon } from "@heroicons/react/solid";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // see: https://heroicons.com/
 
 const Navbar = (props) => {
   // create links from given paths
   const [isSettingsShown, setIsSettingsShown] = useState(false);
   const [isSmallNavlinkShown, setIsSmallNavlinkShown] = useState(false);
+  const navigate = useNavigate();
 
   /* close setting dropdown when click happend */
   document.addEventListener("click", (e) => {
     setIsSettingsShown(false);
     setIsSmallNavlinkShown(false);
   });
+
+  const logout = () => {
+    localStorage.removeItem("access");
+    navigate("/login");
+  };
 
   return (
     <nav class="bg-sky-200 w-screen text-xl">
@@ -43,7 +50,7 @@ const Navbar = (props) => {
               class="flex text-sm bg-gray-800 rounded-full"
             >
               <span class="sr-only">Open user menu</span>
-              <UserCircleIcon className="h-10 w-10 text-white	" />
+              <UserCircleIcon className="h-10 w-10 text-white" />
             </button>
             <div
               className={`w-36 absolute right-0 bg-sky-600  text-center z-50  
@@ -55,7 +62,7 @@ const Navbar = (props) => {
                   <NavLink to="/settings">Settings</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/login">Log out</NavLink>
+                  <button onClick={logout}>Log out</button>
                 </li>
               </ul>
             </div>
