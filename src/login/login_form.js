@@ -11,22 +11,6 @@ const LoginForm = (props) => {
   const location = useLocation();
   const { setIsAuth } = useContext(AuthContext);
   console.log("location", location);
-  const handleLogin = async (e) => {
-    console.log("here");
-    const nextPath = location.state?.from ? location.state.from.pathname : "/";
-    const response = await axios.post("/token/", {
-      username: "arinmis",
-      password: "asdf4040.",
-    });
-    // check whether the auth is successfull
-    if (response.status === 200) {
-      localStorage.setItem("access", response.data.access);
-      setIsAuth(true); // make it true after auth
-      navigate(nextPath);
-    } else {
-      alert("Something went wrong");
-    }
-  };
 
   return (
     <Formik
@@ -59,6 +43,13 @@ const LoginForm = (props) => {
           const nextPath = location.state?.from
             ? location.state.from.pathname
             : "/";
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.access}`;
+          console.log(
+            "auth header",
+            axios.defaults.headers.common["Authorization"]
+          );
           setIsAuth(true); // make it true after auth
           navigate(nextPath);
         } catch {

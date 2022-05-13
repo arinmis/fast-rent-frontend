@@ -9,8 +9,6 @@ import ManagerRents from "./manager/rents/rents";
 import ManagerReservations from "./manager/reservations/reservations";
 import Statistics from "./manager/statistics/stastistics";
 import PagesWithNavbar from "./pages_with_navbar/pages_with_navbar";
-import { useContext } from "react";
-import AuthContext from "./store/AuthContext";
 import RequireAuth from "./components/require_auth";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
