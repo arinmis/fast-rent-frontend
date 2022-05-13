@@ -7,7 +7,9 @@ import { AuthProvider } from "./store/AuthContext";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/api";
-axios.defaults.headers.common["Authorization"] = localStorage.getItem("acces");
+axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem(
+  "access"
+)}`;
 axios.defaults.headers.post["Content-Type"] = "application/json";
 // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 

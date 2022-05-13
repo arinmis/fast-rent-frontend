@@ -9,6 +9,7 @@ const Rents = () => {
     `Pick-up Date: ${new Date().toUTCString()}`,
     `Return Date: ${new Date().toUTCString()}`,
   ];
+
   const oldRents = Array.from(Array(carAmount).keys()).map((item) => (
     <Car
       carImage={MockCar.carImage}
