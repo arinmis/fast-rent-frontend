@@ -5,12 +5,19 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "../store/AuthContext";
 import { useContext } from "react";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const LoginForm = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { setIsAuth } = useContext(AuthContext);
   console.log("location", location);
+
+  /* route with considering user type */
+  const findNextRoute = (isManager) => {
+    const homePath = isManager ? "/manager" : "/";
+    return location.state?.from ? location.state.from.pathname : homePath;
+  };
 
   return (
     <Formik
@@ -38,14 +45,12 @@ const LoginForm = (props) => {
             password: values.password,
           });
           console.log(response.status);
-          console.log("here");
-          localStorage.setItem("access", response.data.access);
-          const nextPath = location.state?.from
-            ? location.state.from.pathname
-            : "/";
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${response.data.access}`;
+          const token = response.data.access;
+          console.log("here is token, ", token);
+          const decoded = jwtDecode(token);
+          console.log("decoded", decoded);
+          const nextPath = findNextRoute(decoded["is_staff"]);
+          axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
           console.log(
             "auth header",
             axios.defaults.headers.common["Authorization"]
@@ -83,7 +88,6 @@ const LoginForm = (props) => {
               <ErrorText message={errors.username}></ErrorText>
             </div>
           </div>
-
           <div class="input-layout w-72">
             <label for="password">Password</label>
             <input
