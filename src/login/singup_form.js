@@ -1,4 +1,7 @@
 import Modal from "flowbite/src/components/modal";
+import { Formik } from "formik";
+import ErrorText from "../components/error_text";
+import axios from "axios";
 
 const SingupForm = (props) => {
   const showSingupModel = () => {
@@ -16,7 +19,6 @@ const SingupForm = (props) => {
 
   const handleSingup = (e) => {
     e.preventDefault();
-    hideSingupModel();
   };
 
   return (
@@ -37,7 +39,7 @@ const SingupForm = (props) => {
             <div class="flex justify-end p-2">
               <button
                 type="button"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-black"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-black"
                 onClick={hideSingupModel}
               >
                 <svg
@@ -55,82 +57,163 @@ const SingupForm = (props) => {
               </button>
             </div>
 
-            <form className="px-6 grid grid-rows gap-6">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="mb-2 input-layout">
-                  <label for="fName">First Name</label>
-                  <input
-                    type="text"
-                    id="fName"
-                    className="form-input"
-                    placeholder="Mustafa"
-                    required=""
-                  />
-                </div>
-                <div class="mb-2 input-layout">
-                  <label for="lName">Last Name</label>
-                  <input
-                    type="text"
-                    id="lName"
-                    className="form-input"
-                    placeholder="Arinmis"
-                    required=""
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div class="mb-2 input-layout">
-                  <label for="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="form-input"
-                    placeholder="name@flowbite.com"
-                    required=""
-                  />
-                </div>
-                <div class="mb-2 input-layout">
-                  <label for="password">Password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    className="form-input"
-                    required=""
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <div class="mb-2 input-layout">
-                  <label for="phone-number">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone-number"
-                    className="form-input"
-                    placeholder="+90 543 535 95 24"
-                    required=""
-                  />
-                </div>
-                <div class="mb-2 input-layout">
-                  <label for="ID">ID</label>
-                  <input
-                    type="text"
-                    id="ID"
-                    className="form-input"
-                    placeholder="Arinmis"
-                    required=""
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center mb-3">
-                <button
-                  data-modal-toggle="signupModal"
-                  onClick={handleSingup}
-                  className="btn-primary"
+            <Formik
+              initialValues={{
+                firstName: "",
+                lastName: "",
+                email: "",
+                username: "",
+                password: "",
+                citizenID: "",
+              }}
+              validate={(values) => {
+                const errors = {};
+                return errors;
+              }}
+              onSubmit={async (values, { setSubmitting }) => {
+                console.log("herer");
+                const response = await axios.post("/create-customer/", {
+                  citizen_id: values.citizenID,
+                  user: {
+                    username: values.username,
+                    first_name: values.firstName,
+                    last_name: values.lastName,
+                    email: values.email,
+                    password: values.password,
+                  },
+                });
+                console.log(response);
+                hideSingupModel();
+                try {
+                } catch {
+                  alert("Something went wrong");
+                }
+              }}
+            >
+              {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting,
+                /* and other goodies */
+              }) => (
+                <form
+                  onSubmit={handleSubmit}
+                  className="px-6 grid grid-rows gap-6"
                 >
-                  Singup
-                </button>
-              </div>
-            </form>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div class="mb-2 input-layout">
+                      <label for="phone-number">User Name</label>
+                      <input
+                        type="text"
+                        id="username"
+                        className="form-input"
+                        placeholder="arinmis"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.username}
+                      />
+                      <div className="flex justify-end">
+                        <ErrorText message={errors.username}></ErrorText>
+                      </div>
+                    </div>
+                    <div class="mb-2 input-layout">
+                      <label for="ID">ID</label>
+                      <input
+                        type="text"
+                        id="citizenID"
+                        className="form-input"
+                        placeholder="11111111111"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.citizenID}
+                      />
+                      <div className="flex justify-end">
+                        <ErrorText message={errors.citizenID}></ErrorText>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="mb-2 input-layout">
+                      <label for="fName">First Name</label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        className="form-input"
+                        placeholder="Mustafa"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.firstName}
+                      />
+                      <div className="flex justify-end">
+                        <ErrorText message={errors.firstName}></ErrorText>
+                      </div>
+                    </div>
+                    <div class="mb-2 input-layout">
+                      <label for="lName">Last Name</label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        className="form-input"
+                        placeholder="Arinmis"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.lastName}
+                      />
+                      <div className="flex justify-end">
+                        <ErrorText message={errors.lastName}></ErrorText>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div class="mb-2 input-layout">
+                      <label for="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        className="form-input"
+                        placeholder="mustafa_arinmis@outlook.com"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                      />
+                      <div className="flex justify-end">
+                        <ErrorText message={errors.password}></ErrorText>
+                      </div>
+                    </div>
+                    <div class="mb-2 input-layout">
+                      <label for="password">Password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        className="form-input"
+                        placeholder="********"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                      />
+                      <div className="flex justify-end">
+                        <ErrorText message={errors.email}></ErrorText>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-end mb-3">
+                    <button
+                      data-modal-toggle="signupModal"
+                      type="submit"
+                      className="btn-primary"
+                    >
+                      Singup
+                    </button>
+                  </div>
+                </form>
+              )}
+            </Formik>
+            {/*
+             */}
           </div>
         </div>
       </div>
