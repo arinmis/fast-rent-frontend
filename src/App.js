@@ -12,10 +12,17 @@ import PagesWithNavbar from "./pages_with_navbar/pages_with_navbar";
 import RequireAuth from "./components/require_auth";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "./store/AuthContext";
 
 function App() {
+  const { setIsAuth, isAuth } = useContext(AuthContext);
   const pathOfPagesUser = ["rents", "reservations"];
   const pathOfPagesManager = ["rents", "reservations", "cars", "statistics"];
+
+  // set auth state before app rendering
+  if (!isAuth) setIsAuth(localStorage.getItem("access") ? true : false);
+
   return (
     <BrowserRouter>
       <Routes>

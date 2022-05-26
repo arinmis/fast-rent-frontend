@@ -7,6 +7,7 @@ const RequireAuth = () => {
   const { isAuth } = useContext(AuthContext);
   let location = useLocation();
   console.log("location is", location);
+  console.log("is auth", isAuth);
 
   // redirect to login if user does not
   return isAuth ? (
