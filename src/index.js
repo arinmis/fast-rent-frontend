@@ -5,6 +5,7 @@ import "./index.css";
 import "flowbite";
 import { AuthProvider } from "./store/AuthContext";
 import axios from "axios";
+import { RentProvider } from "./store/RentContext";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/api";
 // set token
@@ -42,7 +43,9 @@ axios.interceptors.response.use(
 
 ReactDOM.render(
   <AuthProvider>
-    <App />
+    <RentProvider>
+      <App />
+    </RentProvider>
   </AuthProvider>,
   document.getElementById("root")
 );
