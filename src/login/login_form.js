@@ -50,19 +50,13 @@ const LoginForm = (props) => {
             username: values.username,
             password: values.password,
           });
-          console.log(response.status);
           const token = response.data.access;
-          console.log("here is token, ", token);
           const decoded = jwtDecode(token);
-          console.log("decoded", decoded);
           const nextPath = findNextRoute(decoded["is_staff"]);
           axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-          console.log(
-            "auth header",
-            axios.defaults.headers.common["Authorization"]
-          );
           setIsAuth(true); // make it true after auth
           localStorage.setItem("access", token);
+          localStorage.setItem("user_id", decoded.user_id);
           navigate(nextPath);
         } catch {
           alert("Something went wrong");
