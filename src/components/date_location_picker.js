@@ -1,10 +1,47 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useContext, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import RentContext from "../store/RentContext";
 
 const DateLocationPicker = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const { rent, setRent } = useContext(RentContext);
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    axios.get("/rent-locations/").then((response) => {
+      setLocations(response.data);
+      setRent({
+        ...rent,
+        pickupLocation: response.data[0].id,
+        returnLocation: response.data[0].id,
+      });
+    });
+  }, []);
+
+  const setPickupDate = (date) => {
+    setRent({
+      ...rent,
+      pickupDate: date,
+    });
+  };
+
+  const setReturnDate = (date) => {
+    setRent({
+      ...rent,
+      returnDate: date,
+    });
+  };
+
+  const getLocations = () => {
+    if (locations.length === 0) return null;
+    return locations.map((location) => (
+      <option key={location.id} value={location.id}>
+        <span>{location.city}</span>
+      </option>
+    ));
+  };
+
   return (
     <div className="card  grid gap-5  grid-rows">
       <div className="grid gap-5 sm:grid-cols-2 grid-cols-1">
@@ -12,13 +49,20 @@ const DateLocationPicker = () => {
           <label for="pickupOffice" className="vertical-bar">
             Pick-up Office
           </label>
-          <input
-            type="text"
+          <select
             name="pickupOffice"
             id="pickupOffice"
             className="form-input"
-            placeholder="Antalya"
-          />
+            value={rent.pickupLocation}
+            onChange={(event) => {
+              setRent({
+                ...rent,
+                pickupLocation: parseInt(event.target.value),
+              });
+            }}
+          >
+            {getLocations()}
+          </select>
         </div>
         <div className="flex items-center">
           <label for="pickupDate" className="vertical-bar">
@@ -26,24 +70,31 @@ const DateLocationPicker = () => {
           </label>
           <DatePicker
             className="form-input"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={rent.pickupDate}
+            onChange={(date) => setPickupDate(date)}
           />
         </div>
       </div>
 
       <div className="ralative grid gap-5 sm:grid-cols-2 grid-cols-1">
         <div className="flex items-center">
-          <label for="pickupOffice" className="vertical-bar">
+          <label for="returnOffice" className="vertical-bar">
             Return Office
           </label>
-          <input
-            type="text"
-            name="pickupOffice"
+          <select
+            name="returnOffice"
+            id="returnOffice"
             className="form-input"
-            id="pickupOffice"
-            placeholder="Antalya"
-          />
+            value={rent.returnLocation}
+            onChange={(event) => {
+              setRent({
+                ...rent,
+                returnLocation: parseInt(event.target.value),
+              });
+            }}
+          >
+            {getLocations()}
+          </select>
         </div>
         <div className="flex items-center">
           <label for="pickupDate" className="vertical-bar">
@@ -51,8 +102,8 @@ const DateLocationPicker = () => {
           </label>
           <DatePicker
             className="form-input"
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
+            selected={rent.returnDate}
+            onChange={(date) => setReturnDate(date)}
           />
         </div>
       </div>
