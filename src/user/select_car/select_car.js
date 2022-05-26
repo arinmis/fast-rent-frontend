@@ -29,7 +29,7 @@ const SelectCar = (props) => {
       const goNextStep = () => {
         setRent({
           ...rent,
-          car_id: car.id,
+          car: car,
         });
         props.setStep(2);
       };

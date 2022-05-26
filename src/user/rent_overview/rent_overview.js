@@ -1,8 +1,12 @@
 import MockCar from "../../assets/mock_car";
 import Car from "../../components/car";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import RentContext from "../../store/RentContext";
 
 const RentOverview = (props) => {
+  const { rent, setRent } = useContext(RentContext);
+
   const navigate = useNavigate();
   const goPrevStep = () => {
     props.setStep(1);
@@ -12,12 +16,19 @@ const RentOverview = (props) => {
     props.setStep(3);
     console.log("next step");
   };
+
+  console.log("here: ", rent);
   /* create mock cars */
+
   const carSelected = (
     <Car
-      carImage={MockCar.carImage}
-      carName={MockCar.carName}
-      features={MockCar.features.slice(0, 2)}
+      carImage={rent.car.photo}
+      carName={rent.car.brand_type.brand_type}
+      features={[
+        `Daily price: ${rent.car.daily_price}$`,
+        `${rent.car.transmission_type.transmission_type}`,
+        `${rent.car.fuel_type.fuel_type}`,
+      ]}
       action={goPrevStep}
       actionName={"Change Car"}
     />
@@ -70,10 +81,7 @@ const RentOverview = (props) => {
               </p>
             </div>
             <div className="flex justify-end">
-              <button
-                onClick={goNextStep}
-                className="btn-primary"
-              >
+              <button onClick={goNextStep} className="btn-primary">
                 Keep Going
               </button>
             </div>
