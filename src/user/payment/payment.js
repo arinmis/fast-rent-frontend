@@ -1,7 +1,28 @@
+import axios from "axios";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import RentContext from "../../store/RentContext";
 
 const Payment = () => {
+  const { rent } = useContext(RentContext);
   const navigate = useNavigate();
+
+  const makeRent = () => {
+    console.log("Here");
+    axios
+      .post("/reservation/", {
+        user: localStorage.getItem("user_id"),
+        car: rent.car.id,
+        pickup_location: rent.pickupLocation,
+        return_location: rent.returnLocation,
+        pickup_date: rent.pickupDate.getTime() / 1000,
+        return_date: rent.returnDate.getTime() / 1000,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+    // navigate("/rents");
+  };
 
   return (
     <div className="flex justify-center items-center  mb-10 sm:mb-40 mx-5">
@@ -51,12 +72,7 @@ const Payment = () => {
             </div>
           </div>
           <div className="flex justify-end">
-            <button
-              onClick={() => {
-                navigate("/rents");
-              }}
-              className="btn-primary"
-            >
+            <button onClick={makeRent} className="btn-primary">
               Pay
             </button>
           </div>

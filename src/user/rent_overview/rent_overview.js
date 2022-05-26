@@ -1,4 +1,3 @@
-import MockCar from "../../assets/mock_car";
 import { format, differenceInDays } from "date-fns";
 import Car from "../../components/car";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +12,7 @@ const RentOverview = (props) => {
     props.setStep(1);
     console.log("here");
   };
+
   const goNextStep = () => {
     props.setStep(3);
     console.log("next step");
@@ -30,7 +30,11 @@ const RentOverview = (props) => {
         `${rent.car.transmission_type.transmission_type}`,
         `${rent.car.fuel_type.fuel_type}`,
       ]}
-      action={goPrevStep}
+      actions={
+        <button className="btn-primary ml-5" onClick={goPrevStep}>
+          Change Car
+        </button>
+      }
       actionName={"Change Car"}
     />
   );
