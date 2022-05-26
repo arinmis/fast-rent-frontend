@@ -16,7 +16,13 @@ const LoginForm = (props) => {
   /* route with considering user type */
   const findNextRoute = (isManager) => {
     const homePath = isManager ? "/manager" : "/";
-    return location.state?.from ? location.state.from.pathname : homePath;
+    // consider next path
+    const nextPath =
+      location.state && location.state.from.patname !== "/login"
+        ? location.state.from.pathname
+        : null;
+    console.log("next path: ", nextPath);
+    return nextPath ? nextPath : homePath;
   };
 
   return (
@@ -56,6 +62,7 @@ const LoginForm = (props) => {
             axios.defaults.headers.common["Authorization"]
           );
           setIsAuth(true); // make it true after auth
+          localStorage.setItem("access", token);
           navigate(nextPath);
         } catch {
           alert("Something went wrong");
@@ -115,7 +122,6 @@ const LoginForm = (props) => {
         </form>
       )}
     </Formik>
-    
   );
 };
 export default LoginForm;
