@@ -1,15 +1,25 @@
 import CarFilter from "../../components/car_filter";
 import Car from "../../components/car";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import RentContext from "../../store/RentContext";
 
 const SelectCar = (props) => {
   const { rent, setRent } = useContext(RentContext);
+  const [cars, setCars] = useState([]);
+
+  useEffect(() => {
+    axios.get("car/").then((response) => {
+      console.log(response.data);
+      setCars(response.data);
+    });
+  }, []);
+  /* create mock cars */
 
   const getCars = () => {
-    if (props.cars.length === 0) return "Oppps, no car to show";
+    if (cars.length === 0) return "Oppps, no car to show";
 
-    return props.cars.map((car) => {
+    return cars.map((car) => {
       const features = [
         `Daily price: ${car.daily_price}$`,
         `${car.transmission_type.transmission_type}`,

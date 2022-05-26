@@ -2,23 +2,13 @@ import SelectCar from "../select_car/select_car";
 import Payment from "../payment/payment";
 import RentOverview from "../rent_overview/rent_overview";
 import { useState } from "react";
-import axios from "axios";
-import { useEffect } from "react";
 
 const Steps = () => {
   const [step, setStep] = useState(1); // first step
-  const [cars, setCars] = useState([]);
 
   const handleStepClick = (step) => {
     setStep(step);
   };
-
-  useEffect(() => {
-    axios.get("car/").then((response) => {
-      console.log(response.data);
-      setCars(response.data);
-    });
-  }, []);
 
   return (
     <div className="grid grid-row-2 col-span-2 ">
@@ -58,9 +48,9 @@ const Steps = () => {
       </div>
       <div>
         {step === 1 ? (
-          <SelectCar cars={cars} setStep={setStep} />
+          <SelectCar setStep={setStep} />
         ) : step === 2 ? (
-          <RentOverview cars={cars} setStep={setStep} />
+          <RentOverview setStep={setStep} />
         ) : (
           <Payment />
         )}
