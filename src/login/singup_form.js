@@ -17,10 +17,6 @@ const SingupForm = (props) => {
     document.querySelector("[modal-backdrop]").remove(); // kill background
   };
 
-  const handleSingup = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <>
       <div class="flex justify-end text-sm font-medium text-gray-500 dark:text-gray-300">
@@ -71,7 +67,6 @@ const SingupForm = (props) => {
                 return errors;
               }}
               onSubmit={async (values, { setSubmitting }) => {
-                console.log("herer");
                 const response = await axios.post("/create-customer/", {
                   citizen_id: values.citizenID,
                   user: {
@@ -82,7 +77,6 @@ const SingupForm = (props) => {
                     password: values.password,
                   },
                 });
-                console.log(response);
                 hideSingupModel();
                 try {
                 } catch {
