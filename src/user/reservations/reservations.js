@@ -18,12 +18,12 @@ const Reservations = () => {
   useEffect(() => {
     setReservations(
       reservationData.map((reservation) => {
+        // filter active reservations
+        if (!reservation.is_active) return null;
         const cancelButton = (
           <button
             onClick={() => {
               removeReservation(reservation.id);
-              // setReservationData(reservationData);
-              // setReservationData([]);
             }}
             className="btn-primary ml-5"
           >
