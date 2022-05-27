@@ -20,8 +20,8 @@ const Payment = () => {
       })
       .then((response) => {
         console.log(response.data);
+        navigate("/rents");
       });
-    // navigate("/rents");
   };
 
   return (

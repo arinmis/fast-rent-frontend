@@ -1,16 +1,20 @@
+import { differenceInDays } from "date-fns";
 import { useEffect, useState } from "react";
-import MockCar from "../../assets/mock_car";
 import Car from "../../components/car";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Reservations = () => {
   const navigate = useNavigate();
-  const allFeatures = [
-    "Reservation ID: 1234",
-    ...MockCar.features,
-    `Pick-up Date: ${new Date().toUTCString()}`,
-    `Return Date: ${new Date().toUTCString()}`,
-  ];
+  const [reservationData, setReservationData] = useState([]);
+
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    axios.get("/reservation/").then((response) => {
+      setReservationData(response.data);
+    });
+  }, []);
 
   const editButton = (
     <button
@@ -27,7 +31,7 @@ const Reservations = () => {
   const cancelButton = (
     <button
       onClick={() => {
-        setReservations([]);
+        // setReservations([]);
       }}
       className="btn-primary ml-5"
     >
@@ -35,18 +39,44 @@ const Reservations = () => {
     </button>
   );
 
-  const reservation = (
-    <Car
-      carImage={MockCar.carImage}
-      carName={"Audi A3"}
-      features={allFeatures}
-      cardColor={"bg-sky-100"}
-      actions={[editButton, cancelButton]}
-    />
-  );
-  const [reservations, setReservations] = useState([reservation]);
+  /*
+  <Car
+    carImage={MockCar.carImage}
+    carName={"Audi A3"}
+    features={allFeatures}
+    cardColor={"bg-sky-100"}
+    actions={[editButton, cancelButton]}
+  />
+  */
+  const reservations = reservationData.map((reservation) => {
+    const features = [
+      `Reservation ID: ${reservation.id}`,
+      `${reservation.car.transmission_type.transmission_type}`,
+      `${reservation.car.fuel_type.fuel_type}`,
+      `Pick-up Location: ${reservation.pickup_location.city}`,
+      `Return Location: ${reservation.return_location.city}`,
+      `Pick-up Date: ${reservation.pickup_date}`,
+      `Return Date: ${reservation.return_date}`,
+      `Daily Price: ${reservation.car.daily_price} $`,
+      `Total Price: ${
+        reservation.car.daily_price *
+        differenceInDays(
+          new Date(reservation.return_date),
+          new Date(reservation.pickup_date)
+        )
+      } $`,
+    ];
 
-  useEffect(() => {}, []);
+    return (
+      <Car
+        carImage={reservation.car.photo}
+        carName={reservation.car.brand_type.brand_type}
+        features={features}
+        cardColor={"bg-sky-100"}
+        actions={[editButton, cancelButton]}
+      />
+    );
+  });
 
   return (
     <div>

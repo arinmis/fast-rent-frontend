@@ -1,5 +1,6 @@
 import Car from "../../components/car";
 import MockCar from "../../assets/mock_car";
+import userEvent from "@testing-library/user-event";
 
 const Rents = () => {
   const carAmount = 10;
@@ -9,6 +10,7 @@ const Rents = () => {
     `Pick-up Date: ${new Date().toUTCString()}`,
     `Return Date: ${new Date().toUTCString()}`,
   ];
+
 
   const oldRents = Array.from(Array(carAmount).keys()).map((item) => (
     <Car
