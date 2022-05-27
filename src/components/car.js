@@ -1,6 +1,4 @@
 const Car = (props) => {
-  console.log(props);
-  console.log(props.actionName);
   return (
     <div className="grid">
       <div>
@@ -16,8 +14,8 @@ const Car = (props) => {
             <div className="flex flex-col items-center divide-y">
               <h1 className="text-2xl">{props.carName}</h1>
               <ul className="list-disc pt-3">
-                {props.features.map((item) => (
-                  <li>{item}</li>
+                {props.features.map((item, index) => (
+                  <li key={props.id + "-" + index}>{item}</li>
                 ))}
               </ul>
             </div>
