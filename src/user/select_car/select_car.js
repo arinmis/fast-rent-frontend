@@ -3,10 +3,14 @@ import Car from "../../components/car";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import RentContext from "../../store/RentContext";
+import { useNavigate } from "react-router-dom";
 
 const SelectCar = (props) => {
   const { rent, setRent } = useContext(RentContext);
   const [cars, setCars] = useState([]);
+  let navigate = useNavigate();
+
+  console.log("hrere");
 
   const fetchCars = async () => {
     axios
@@ -23,6 +27,11 @@ const SelectCar = (props) => {
   };
 
   useEffect(() => {
+    // make sure times and locations are selected
+    if (Object.keys(rent) !== 4) {
+      navigate("/");
+      return;
+    }
     fetchCars();
   }, []);
   /* create mock cars */
