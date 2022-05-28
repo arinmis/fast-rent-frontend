@@ -7,7 +7,7 @@
     @apply min-h-screen flex flex-col items-center;
   }
   .main-content {
-    @apply sm:w-8/12 w-11/12 mt-10;
+    @apply sm:w-8/12 w-11/12 my-10;
   }
   .nav-content {
     @apply sm:w-8/12 w-11/12 py-3 max-h-screen;
