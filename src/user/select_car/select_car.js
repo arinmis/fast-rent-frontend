@@ -8,10 +8,10 @@ const SelectCar = (props) => {
   const { rent, setRent } = useContext(RentContext);
   const [cars, setCars] = useState([]);
 
-  useEffect(() => {
+  const fetchCars = async () => {
     axios
       .post("car/", {
-        pickup_location: rent.pickupLocation, 
+        pickup_location: rent.pickupLocation,
         return_location: rent.returnLocation,
         pickup_date: rent.pickupDate.getTime() / 1000,
         return_date: rent.returnDate.getTime() / 1000,
@@ -20,6 +20,10 @@ const SelectCar = (props) => {
         console.log(response.data);
         setCars(response.data);
       });
+  };
+
+  useEffect(() => {
+    fetchCars();
   }, []);
   /* create mock cars */
 
@@ -33,12 +37,30 @@ const SelectCar = (props) => {
         `${car.fuel_type.fuel_type}`,
       ];
 
-      const goNextStep = () => {
+      // allocate car and go payment
+      const goNextStep = async () => {
         setRent({
           ...rent,
           car: car,
         });
-        props.setStep(2);
+        console.log("car selected: " + rent.car.brand_type.brand_type);
+        try {
+          const response = await axios.get(`/allocate-car/${rent.car.id}/`);
+          props.setStep(2);
+        } catch (error) {
+          alert(
+            `Car ${rent.car.brand_type.brand_type} has been allocated, please select another one`
+          );
+          fetchCars(); // update car availables
+        }
+        /*
+        // if already allocated
+        if (response.status === 406) {
+          props.setStep(1);
+        } else {
+          props.setStep(2);
+        }
+        */
       };
 
       const rentCarButton = (
