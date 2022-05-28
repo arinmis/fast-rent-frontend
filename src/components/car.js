@@ -2,11 +2,7 @@ const Car = (props) => {
   return (
     <div className="grid">
       <div>
-        <div
-          className={
-            "card  w-full " + (props.cardColor ? props.cardColor : "bg-white")
-          }
-        >
+        <div className={"card  w-full " + props.cardColor}>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="flex  content-center">
               <img src={props.carImage} className="" alt="car" />

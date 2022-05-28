@@ -7,6 +7,7 @@ const Settings = () => {
           <input
             type="text"
             id="fName"
+            className="form-input"
             placeholder="Mustafa"
             value="Mustafa"
             required=""
@@ -17,6 +18,7 @@ const Settings = () => {
           <input
             type="text"
             id="lName"
+            className="form-input"
             placeholder="Arinmis"
             value="Arinmis"
             required=""
@@ -27,6 +29,7 @@ const Settings = () => {
           <input
             type="text"
             id="ID"
+            className="form-input"
             placeholder="Arinmis"
             value="11111111111"
             required=""
@@ -37,6 +40,7 @@ const Settings = () => {
           <input
             type="tel"
             id="phone-number"
+            className="form-input"
             placeholder="+90 543 535 95 24"
             value="+90 543 549 99 53"
             required=""
@@ -47,6 +51,7 @@ const Settings = () => {
           <input
             type="email"
             id="email"
+            className="form-input"
             placeholder="name@flowbite.com"
             value="name@flowbite.com"
             required=""
@@ -54,7 +59,12 @@ const Settings = () => {
         </div>
         <div class="mb-2 input-layout">
           <label for="password">password</label>
-          <input type="password" id="password" required="" />
+          <input
+            className="form-input"
+            type="password"
+            id="password"
+            required=""
+          />
         </div>
       </form>
       <div className="flex justify-end mt-5">

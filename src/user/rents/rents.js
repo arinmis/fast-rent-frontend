@@ -4,71 +4,54 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Rents = () => {
-  const [reservationData, setReservationData] = useState([]);
+  const [rentData, setRentData] = useState([]);
   const [rents, setRents] = useState([]);
 
   useEffect(() => {
-    axios.get("/reservation/").then((response) => {
-      setReservationData(response.data);
+    axios.get("/rent/").then((response) => {
+      setRentData(response.data);
+      console.log(response.data);
     });
   }, []);
 
   useEffect(() => {
     setRents(
-      reservationData.map((reservation) => {
-        // filter active reservations as rent
-        if (reservation.is_active) return null;
+      rentData.map((rent) => {
+        // filter active rents as rent
 
         const features = [
-          `Reservation ID: ${reservation.id}`,
-          `${reservation.car.transmission_type.transmission_type}`,
-          `${reservation.car.fuel_type.fuel_type}`,
-          `Pick-up Location: ${reservation.pickup_location.city}`,
-          `Return Location: ${reservation.return_location.city}`,
-          `Pick-up Date: ${reservation.pickup_date}`,
-          `Return Date: ${reservation.return_date}`,
-          `Daily Price: ${reservation.car.daily_price} $`,
+          `Rent ID: ${rent.id}`,
+          `${rent.car.transmission_type.transmission_type}`,
+          `${rent.car.fuel_type.fuel_type}`,
+          `Pick-up Location: ${rent.pickup_location.city}`,
+          `Return Location: ${rent.return_location.city}`,
+          `Pick-up Date: ${rent.pickup_date}`,
+          `Return Date: ${rent.return_date}`,
+          `Daily Price: ${rent.car.daily_price} $`,
           `Total Price: ${
-            reservation.car.daily_price *
-            differenceInDays(
-              new Date(reservation.return_date),
-              new Date(reservation.pickup_date)
-            )
+            rent.car.daily_price *
+            (differenceInDays(
+              new Date(rent.return_date),
+              new Date(rent.pickup_date)
+            ) +
+              1)
           } $`,
         ];
 
+        // car is currently in use if not outdated and active
         return (
           <Car
-            key={reservation.id}
-            id={reservation.id}
-            carImage={reservation.car.photo}
-            carName={reservation.car.brand_type.brand_type}
+            key={rent.id}
+            id={rent.id}
+            carImage={rent.car.photo}
+            carName={rent.car.brand_type.brand_type}
             features={features}
+            cardColor={rent.is_active ? "bg-sky-100" : "bg-white"}
           />
         );
       })
     );
-  }, [reservationData]);
-
-  const removeReservation = (id) => {
-    // find the reservation
-    let index = -1;
-    reservationData.forEach((reservation, i) => {
-      if (reservation.id === id) {
-        index = i;
-        return;
-      }
-    });
-    const removedReservation = reservationData.splice(index, 1)[0];
-    // remove from UI
-    setReservationData([...reservationData]); // copy to chage state
-    // remove from backend
-    console.log("removedReservation", removedReservation);
-    console.log("removedReservation", removedReservation.id);
-    axios.delete(`/reservation/${removedReservation.id}/`).then((response) => {
-      console.log(response.data);
-    });
-  };
+  }, [rentData]);
 
   return (
     <div>
@@ -76,7 +59,7 @@ const Rents = () => {
         <input
           type="text"
           id="table"
-          placeholder="Enter reservations ID"
+          placeholder="Enter rents ID"
           className="w-full max-w-sm"
         />
       </div>
