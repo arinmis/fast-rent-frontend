@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import RentContext from "../../store/RentContext";
 import { useNavigate } from "react-router-dom";
+import { multipleExist } from "../../utils/utils";
 
 const SelectCar = (props) => {
   const { rent, setRent } = useContext(RentContext);
@@ -28,7 +29,14 @@ const SelectCar = (props) => {
 
   useEffect(() => {
     // make sure times and locations are selected
-    if (Object.keys(rent) !== 4) {
+    if (
+      !multipleExist(Object.keys(rent), [
+        "pickupLocation",
+        "returnLocation",
+        "returnDate",
+        "pickupDate",
+      ])
+    ) {
       navigate("/");
       return;
     }

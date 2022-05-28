@@ -3,15 +3,16 @@ import Car from "../../components/car";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import RentContext from "../../store/RentContext";
-import axios from "axios";
+import { deAllocateCar } from "../../utils/utils";
 
 const RentOverview = (props) => {
   const { rent } = useContext(RentContext);
 
   const navigate = useNavigate();
+
+  console.log(rent.car);
   const goPrevStep = async () => {
-    console.log("here");
-    const response = await axios.get(`/deallocate-car/${rent.car.id}/`);
+    const response = await deAllocateCar(rent.car.id);
     console.log(response.data);
     props.setStep(1);
   };
@@ -43,7 +44,6 @@ const RentOverview = (props) => {
   );
 
   const numOfRentDay = differenceInDays(rent.returnDate, rent.pickupDate);
-  console.log(numOfRentDay);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 mb-10">
