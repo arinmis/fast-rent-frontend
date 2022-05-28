@@ -3,14 +3,17 @@ import Car from "../../components/car";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import RentContext from "../../store/RentContext";
+import axios from "axios";
 
 const RentOverview = (props) => {
   const { rent } = useContext(RentContext);
 
   const navigate = useNavigate();
-  const goPrevStep = () => {
-    props.setStep(1);
+  const goPrevStep = async () => {
     console.log("here");
+    const response = await axios.get(`/deallocate-car/${rent.car.id}/`);
+    console.log(response.data);
+    props.setStep(1);
   };
 
   const goNextStep = () => {
