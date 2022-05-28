@@ -11,8 +11,6 @@ const SelectCar = (props) => {
   const [cars, setCars] = useState([]);
   let navigate = useNavigate();
 
-  console.log("hrere");
-
   const fetchCars = async () => {
     axios
       .post("car/", {
@@ -60,9 +58,9 @@ const SelectCar = (props) => {
           ...rent,
           car: car,
         });
-        console.log("car selected: " + rent.car.brand_type.brand_type);
+        console.log("car selected: " + car.brand_type.brand_type);
         try {
-          const response = await axios.get(`/allocate-car/${rent.car.id}/`);
+          const response = await axios.get(`/allocate-car/${car.id}/`);
           props.setStep(2);
         } catch (error) {
           alert(

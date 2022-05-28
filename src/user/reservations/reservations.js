@@ -42,10 +42,11 @@ const Reservations = () => {
           `Daily Price: ${reservation.car.daily_price} $`,
           `Total Price: ${
             reservation.car.daily_price *
-            differenceInDays(
+            (differenceInDays(
               new Date(reservation.return_date),
               new Date(reservation.pickup_date)
-            )
+            ) +
+              1)
           } $`,
         ];
 
