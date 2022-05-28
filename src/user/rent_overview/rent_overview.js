@@ -61,7 +61,8 @@ const RentOverview = (props) => {
             </div>
             <div className="flex justify-end">
               <button
-                onClick={() => {
+                onClick={async () => {
+                  await deAllocateCar(rent.car.id);
                   navigate("/");
                 }}
                 className="btn-primary"
