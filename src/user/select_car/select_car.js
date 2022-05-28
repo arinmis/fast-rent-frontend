@@ -9,10 +9,17 @@ const SelectCar = (props) => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    axios.get("car/").then((response) => {
-      console.log(response.data);
-      setCars(response.data);
-    });
+    axios
+      .post("car/", {
+        pickup_location: rent.pickupLocation, 
+        return_location: rent.returnLocation,
+        pickup_date: rent.pickupDate.getTime() / 1000,
+        return_date: rent.returnDate.getTime() / 1000,
+      })
+      .then((response) => {
+        console.log(response.data);
+        setCars(response.data);
+      });
   }, []);
   /* create mock cars */
 
