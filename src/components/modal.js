@@ -1,19 +1,19 @@
 import Modal from "flowbite/src/components/modal";
 
-const CustomModal = (props) => {
-  const showModel = () => {
-    const targetEl = document.getElementById("model");
-    const Model = new Modal(targetEl);
-    Model.show();
-  };
+export const showModel = () => {
+  const targetEl = document.getElementById("model");
+  const Model = new Modal(targetEl);
+  Model.show();
+};
 
-  const hideModel = () => {
-    const targetEl = document.getElementById("model");
-    const Model = new Modal(targetEl);
-    Model.hide();
-    document.querySelector("[modal-backdrop]").remove(); // kill background
-  };
+export const hideModel = () => {
+  const targetEl = document.getElementById("model");
+  const Model = new Modal(targetEl);
+  Model.hide();
+  document.querySelector("[modal-backdrop]").remove(); // kill background
+};
 
+const CustomModal = ({ buttonText, content }) => {
   const handle = (e) => {
     e.preventDefault();
     hideModel();
@@ -23,7 +23,7 @@ const CustomModal = (props) => {
     <>
       <div class="flex justify-end text-sm font-medium text-gray-500 dark:text-gray-300">
         <button className="btn-primary" type="submit" onClick={showModel}>
-          {props.buttonText}
+          {buttonText}
         </button>
       </div>
       <div
@@ -54,7 +54,7 @@ const CustomModal = (props) => {
                 </svg>
               </button>
             </div>
-            {props.content}
+            {content}
           </div>
         </div>
       </div>
