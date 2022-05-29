@@ -3,6 +3,7 @@ import Car from "../../components/car";
 import { PlusSmIcon } from "@heroicons/react/solid";
 import MockCar from "../../assets/mock_car";
 import AddCar from "./add_car";
+import CustomModal from "../../components/modal";
 
 const Cars = () => {
   const deleteCarButton = <button className="btn-primary ml-5">Delete</button>;
@@ -21,6 +22,7 @@ const Cars = () => {
   return (
     <div className="grid grid-row gap-5 ">
       <div className="flex justify-end">
+        <CustomModal />
         <AddCar />
       </div>
       <div className="grid grid-cols-1  sm:grid-cols-3">
