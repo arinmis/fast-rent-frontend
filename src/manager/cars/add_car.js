@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import ErrorText from "../../components/error_text";
 import axios from "axios";
 import { info } from "autoprefixer";
+import FormData from "form-data";
 
 const AddCar = (props) => {
   const form = (
@@ -13,14 +14,19 @@ const AddCar = (props) => {
         location: 1,
         transmissionType: 1,
         priceDaily: 30,
-        carPhoto: null,
+        carPhoto: "",
       }}
       validate={(values) => {
         const errors = {};
         return errors;
       }}
       onSubmit={async (values, { setSubmitting }) => {
+        console.log(values);
         try {
+          /*
+          let data = new FormData();
+          data.append('file', file, file.name);
+
           console.log(values);
           console.log(values["file-input"]);
           const response = await axios.post("/save_car/", {
@@ -31,6 +37,7 @@ const AddCar = (props) => {
             priceDaily: values.location,
             carPhoto: values["file-input"],
           });
+          */
           hideModel();
         } catch {
           alert("Something went wrong");
@@ -142,14 +149,16 @@ const AddCar = (props) => {
               </div>
             </div>
             <div class="mb-2 input-layout">
-              <label for="phone-number">Upload car photo</label>
+              <label for="carPhoto">Upload car photo</label>
               <input
                 type="file"
-                id="file-input"
+                id="carPhoto"
                 className="form-input"
-                onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.carPhoto}
+                onChange={(event) => {
+                  console.log(event.currentTarget.files[0]);
+                  setFieldValue("carPhoto", event.currentTarget.files[0]);
+                }}
               />
               <div className="flex justify-end">
                 <ErrorText message={errors.email}></ErrorText>
