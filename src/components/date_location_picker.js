@@ -38,7 +38,7 @@ const DateLocationPicker = () => {
     if (locations.length === 0) return null;
     return locations.map((location) => (
       <option key={location.id} value={location.id}>
-        <span>{location.city}</span>
+        {location.city}
       </option>
     ));
   };

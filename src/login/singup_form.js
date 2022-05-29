@@ -159,4 +159,49 @@ const SingupForm = (props) => {
 
   return <CustomModal buttonText="Singup" content={form} />;
 };
+
 export default SingupForm;
+
+/*
+<form className="px-6 grid grid-rows gap-2">
+
+  <div className="mb-2 input-layout">
+    <label for="fName">Car Brand</label>
+    <input type="text" id="fName" className="form-input" placeholder="Toyota" />
+  </div>
+
+
+  <div class="mb-2 input-layout">
+    <label for="phone-number">Upload car photo</label>
+    <input type="file" id="file-input" name="ImageStyle" />
+  </div>
+
+
+
+
+  <div class="mb-2 input-layout">
+    <label for="fName">Car Brand</label>
+    <select value="gas" className="w-full">
+      <option value="gas">gas</option>
+      <option value="diessel">diessel</option>
+      <option value="electric">electric</option>
+      <option value="hybrit">hybrit</option>
+    </select>
+  </div>
+
+  <div class="mb-2 input-layout">
+    <label for="email">Price per hour</label>
+    <input type="number" className="form-input" placeholder="30" />
+  </div>
+
+  <div class="mb-2 input-layout">
+    <label for="password">Transmission type</label>
+    <select value="gas" className="w-full">
+      <option value="gas">Automatic</option>
+      <option value="diessel">Manual</option>
+    </select>
+  </div>
+
+
+</form>;
+*/
