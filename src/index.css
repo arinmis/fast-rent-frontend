@@ -23,7 +23,7 @@
     @apply grid grid-cols-3 justify-items-center items-center;
   }
   .form-input {
-    @apply w-full;
+    @apply min-w-full;
   }
   .btn-primary {
     @apply text-gray-900 bg-white border border-gray-300 focus:outline-none

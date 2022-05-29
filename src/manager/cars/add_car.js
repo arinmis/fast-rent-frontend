@@ -1,108 +1,172 @@
-import Modal from "flowbite/src/components/modal";
+import CustomModal, { hideModel } from "../../components/modal";
+import { Formik } from "formik";
+import ErrorText from "../../components/error_text";
+import axios from "axios";
+import { info } from "autoprefixer";
 
 const AddCar = (props) => {
-  const showSingupModel = () => {
-    const targetEl = document.getElementById("singupModel");
-    const singupModel = new Modal(targetEl);
-    singupModel.show();
-  };
-
-  const hideSingupModel = () => {
-    const targetEl = document.getElementById("singupModel");
-    const singupModel = new Modal(targetEl);
-    singupModel.hide();
-    document.querySelector("[modal-backdrop]").remove(); // kill background
-  };
-
-  const handleSingup = (e) => {
-    e.preventDefault();
-    hideSingupModel();
-  };
-
-  return (
-    <>
-      <div class="flex justify-end text-sm font-medium text-gray-500 dark:text-gray-300">
-        <button className="btn-primary" type="submit" onClick={showSingupModel}>
-          Add a New Car
-        </button>
-      </div>
-      <div
-        id="singupModel"
-        tabindex="-1"
-        aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center"
-      >
-        <div class="relative p-4  h-full sm:h-auto">
-          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div class="flex justify-end p-2">
-              <button
-                type="button"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-black"
-                onClick={hideSingupModel}
+  const form = (
+    <Formik
+      initialValues={{
+        carBrand: 1,
+        fuelType: 1,
+        location: 1,
+        transmissionType: 1,
+        priceDaily: 30,
+        carPhoto: null,
+      }}
+      validate={(values) => {
+        const errors = {};
+        return errors;
+      }}
+      onSubmit={async (values, { setSubmitting }) => {
+        try {
+          console.log(values);
+          console.log(values["file-input"]);
+          const response = await axios.post("/save_car/", {
+            carBrand: values.carBrand,
+            fuelType: values.fuelType,
+            location: values.location,
+            transmissionType: values.transmissionType,
+            priceDaily: values.location,
+            carPhoto: values["file-input"],
+          });
+          hideModel();
+        } catch {
+          alert("Something went wrong");
+        }
+      }}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        setFieldValue,
+        isSubmitting,
+        /* and other goodies */
+      }) => (
+        <form onSubmit={handleSubmit} className="px-6 grid grid-rows gap-6">
+          <div className="grid grid-cols-2 gap-3">
+            <div class="mb-2 input-layout">
+              <label for="carBrand">Car Brand</label>
+              <select
+                name="carBrand"
+                id="carBrand"
+                className="form-input w-48"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.carBrand}
               >
-                <svg
-                  class="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-              </button>
+                <option value="1">Toyota</option>
+                <option value="2">Tesla</option>
+                <option value="3">Audi</option>
+                <option value="4">BMW</option>
+              </select>
+              <div className="flex justify-end">
+                <ErrorText message={errors.carBrand}></ErrorText>
+              </div>
             </div>
-
-            <form className="px-6 grid grid-rows gap-2">
-              <div className="mb-2 input-layout">
-                <label for="fName">Car Brand</label>
-                <input
-                  type="text"
-                  id="fName"
-                  className="form-input"
-                  placeholder="Toyota"
-                />
+            <div class="mb-2 input-layout">
+              <label for="fuelType">FuelType</label>
+              <select
+                name="fuelType"
+                id="fuelType"
+                className="form-input w-48"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.fuelType}
+              >
+                <option value="1">Gas</option>
+                <option value="2">Diessel</option>
+                <option value="3">Electric</option>
+                <option value="4">Hybrit</option>
+              </select>
+              <div className="flex justify-end">
+                <ErrorText message={errors.fuelType}></ErrorText>
               </div>
-              <div class="mb-2 input-layout">
-                <label for="fName">Car Brand</label>
-                <select value="gas" className="w-full">
-                  <option value="gas">gas</option>
-                  <option value="diessel">diessel</option>
-                  <option value="electric">electric</option>
-                  <option value="hybrit">hybrit</option>
-                </select>
-              </div>
-              <div class="mb-2 input-layout">
-                <label for="email">Price per hour</label>
-                <input type="number" className="form-input" placeholder="30" />
-              </div>
-              <div class="mb-2 input-layout">
-                <label for="password">Transmission type</label>
-                <select value="gas" className="w-full">
-                  <option value="gas">Automatic</option>
-                  <option value="diessel">Manual</option>
-                </select>
-              </div>
-              <div class="mb-2 input-layout">
-                <label for="phone-number">Upload car photo</label>
-                <input type="file" id="file-input" name="ImageStyle" />
-              </div>
-              <div className="flex justify-center mb-3">
-                <button
-                  data-modal-toggle="signupModal"
-                  onClick={handleSingup}
-                  className="btn-primary"
-                >
-                  Add a New Car
-                </button>
-              </div>
-            </form>
+            </div>
           </div>
-        </div>
-      </div>
-    </>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="mb-2 input-layout">
+              <label for="pickupOffice">Location</label>
+              <select
+                name="location"
+                id="location"
+                className="form-input  w-48"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.location}
+              >
+                <option value="1">Antalya</option>
+                <option value="2">Tokat</option>
+              </select>
+              <div className="flex justify-end">
+                <ErrorText message={errors.location}></ErrorText>
+              </div>
+            </div>
+            <div class="mb-2 input-layout">
+              <label for="transmissionType">Transmission Type</label>
+              <select
+                name="transmissionType"
+                id="transmissionType"
+                className="form-input  w-48"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.transmissionType}
+              >
+                <option value="1">Manual</option>
+                <option value="2">Automatic</option>
+              </select>
+              <div className="flex justify-end">
+                <ErrorText message={errors.lastName} />
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div class="mb-2 input-layout">
+              <label for="priceDaily">Price Daily</label>
+              <input
+                type="number"
+                id="priceDaily"
+                className="form-input"
+                placeholder="30"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.priceDaily}
+              />
+              <div className="flex justify-end">
+                <ErrorText message={errors.priceDaily}></ErrorText>
+              </div>
+            </div>
+            <div class="mb-2 input-layout">
+              <label for="phone-number">Upload car photo</label>
+              <input
+                type="file"
+                id="file-input"
+                className="form-input"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.carPhoto}
+              />
+              <div className="flex justify-end">
+                <ErrorText message={errors.email}></ErrorText>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-end mb-3">
+            <button type="submit" className="btn-primary">
+              Add
+            </button>
+          </div>
+        </form>
+      )}
+    </Formik>
   );
+
+  return <CustomModal buttonText="Add Car" content={form} />;
 };
+
 export default AddCar;

@@ -61,4 +61,5 @@ const CustomModal = ({ buttonText, content }) => {
     </>
   );
 };
+
 export default CustomModal;
