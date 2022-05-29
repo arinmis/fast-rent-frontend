@@ -68,14 +68,6 @@ const SelectCar = (props) => {
           );
           fetchCars(); // update car availables
         }
-        /*
-        // if already allocated
-        if (response.status === 406) {
-          props.setStep(1);
-        } else {
-          props.setStep(2);
-        }
-        */
       };
 
       const rentCarButton = (
