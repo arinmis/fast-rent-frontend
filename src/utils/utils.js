@@ -10,9 +10,10 @@ export const deAllocateCar = async (id) => {
   return await axios.get(`/deallocate-car/${id}/`);
 };
 
-// arrays element has tove object
+// arrays element has to has object
 // and needs id property
-export const removeWithId = (array, id) => {
+export const removeWithId = (originalArray, id) => {
+  const array = [...originalArray]; // don't mutate original array
   let index = -1;
   array.forEach((item, i) => {
     console.log(item.id, id);
@@ -21,8 +22,6 @@ export const removeWithId = (array, id) => {
       return;
     }
   });
-  console.log(index);
-  array.splice(index, 1);
-  console.log(array.splice(index, 1));
+  console.log("car removed", array.splice(index, 1));
   return array;
 };

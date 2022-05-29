@@ -36,7 +36,7 @@ const Cars = () => {
             // remove car from backend
             const response = axios.delete(`car-crud/${car.id}/`);
             // remove from front end
-            const carsUpdated = removeWithId([...cars], car.id);
+            const carsUpdated = removeWithId(cars, car.id);
             setCars(carsUpdated);
             console.log(carsUpdated, cars);
           }}
@@ -62,7 +62,7 @@ const Cars = () => {
   return (
     <div className="grid grid-row gap-5 ">
       <div className="flex justify-start">
-        <AddCar />
+        <AddCar setCars={setCars} cars={cars} />
       </div>
       <div className="grid grid-cols-1  sm:grid-cols-3">
         <div className="sm:block hidden">
