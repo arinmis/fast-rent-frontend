@@ -36,15 +36,15 @@ const AddCar = (props) => {
           console.log(p);
         }
         try {
-          const response = axios.post("/car-crud/", formData, {
+          const response = await axios.post("/car-crud/", formData, {
             headers: {
               accept: "application/json",
               "Accept-Language": "en-US,en;q=0.8",
               "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
             },
           });
-          console.log(response);
-          console.log("herer");
+          // add new car to ui
+          props.setCars([...props.cars, response.data]);
           hideModel();
         } catch {
           alert("Something went wrong");
