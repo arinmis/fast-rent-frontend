@@ -3,6 +3,7 @@ import Car from "../../components/car";
 import MockCar from "../../assets/mock_car";
 import AddCar from "./add_car";
 import axios from "axios";
+import { removeWithId } from "../../utils/utils";
 import { useState, useEffect } from "react";
 
 const Cars = () => {
@@ -10,7 +11,6 @@ const Cars = () => {
 
   const fetchCars = async () => {
     axios.get("car/").then((response) => {
-      console.log(response.data);
       setCars(response.data);
     });
   };
@@ -30,7 +30,19 @@ const Cars = () => {
       ];
 
       const deleteCarButton = (
-        <button className="btn-primary ml-5">Delete</button>
+        <button
+          className="btn-primary ml-5"
+          onClick={async () => {
+            // remove car from backend
+            const response = axios.delete(`car-crud/${car.id}/`);
+            // remove from front end
+            const carsUpdated = removeWithId([...cars], car.id);
+            setCars(carsUpdated);
+            console.log(carsUpdated, cars);
+          }}
+        >
+          Delete
+        </button>
       );
       const editCarButton = <button className="btn-primary ml-5">Edit</button>;
 

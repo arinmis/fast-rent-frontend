@@ -2,7 +2,6 @@ import CustomModal, { hideModel } from "../../components/modal";
 import { Formik } from "formik";
 import ErrorText from "../../components/error_text";
 import axios from "axios";
-import { info } from "autoprefixer";
 import FormData from "form-data";
 
 const AddCar = (props) => {
@@ -14,7 +13,7 @@ const AddCar = (props) => {
         location: 1,
         transmissionType: 1,
         priceDaily: 30,
-        photo: "",
+        photo: null,
       }}
       validate={(values) => {
         const errors = {};
@@ -27,7 +26,7 @@ const AddCar = (props) => {
         formData.append("fuel_type", values.fuelType);
         formData.append("location", values.location);
         formData.append("transmission_type", values.transmissionType);
-        formData.append("daily_price", values.location);
+        formData.append("daily_price", values.priceDaily);
         formData.append(
           "photo",
           values.photo,
@@ -37,7 +36,7 @@ const AddCar = (props) => {
           console.log(p);
         }
         try {
-          const response = axios.post("/save-car/", formData, {
+          const response = axios.post("/car-crud/", formData, {
             headers: {
               accept: "application/json",
               "Accept-Language": "en-US,en;q=0.8",
@@ -45,6 +44,7 @@ const AddCar = (props) => {
             },
           });
           console.log(response);
+          console.log("herer");
           hideModel();
         } catch {
           alert("Something went wrong");
