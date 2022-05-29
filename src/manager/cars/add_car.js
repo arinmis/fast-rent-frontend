@@ -14,7 +14,7 @@ const AddCar = (props) => {
         location: 1,
         transmissionType: 1,
         priceDaily: 30,
-        carPhoto: "",
+        photo: "",
       }}
       validate={(values) => {
         const errors = {};
@@ -22,22 +22,29 @@ const AddCar = (props) => {
       }}
       onSubmit={async (values, { setSubmitting }) => {
         console.log(values);
+        const formData = new FormData();
+        formData.append("brand_type", values.carBrand);
+        formData.append("fuel_type", values.fuelType);
+        formData.append("location", values.location);
+        formData.append("transmission_type", values.transmissionType);
+        formData.append("daily_price", values.location);
+        formData.append(
+          "photo",
+          values.photo,
+          new Date().getTime() + "-" + values.photo.name
+        );
+        for (var p of formData) {
+          console.log(p);
+        }
         try {
-          /*
-          let data = new FormData();
-          data.append('file', file, file.name);
-
-          console.log(values);
-          console.log(values["file-input"]);
-          const response = await axios.post("/save_car/", {
-            carBrand: values.carBrand,
-            fuelType: values.fuelType,
-            location: values.location,
-            transmissionType: values.transmissionType,
-            priceDaily: values.location,
-            carPhoto: values["file-input"],
+          const response = axios.post("/save-car/", formData, {
+            headers: {
+              accept: "application/json",
+              "Accept-Language": "en-US,en;q=0.8",
+              "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+            },
           });
-          */
+          console.log(response);
           hideModel();
         } catch {
           alert("Something went wrong");
@@ -149,15 +156,15 @@ const AddCar = (props) => {
               </div>
             </div>
             <div class="mb-2 input-layout">
-              <label for="carPhoto">Upload car photo</label>
+              <label for="photo">Upload car photo</label>
               <input
                 type="file"
-                id="carPhoto"
+                id="photo"
                 className="form-input"
                 onBlur={handleBlur}
                 onChange={(event) => {
                   console.log(event.currentTarget.files[0]);
-                  setFieldValue("carPhoto", event.currentTarget.files[0]);
+                  setFieldValue("photo", event.currentTarget.files[0]);
                 }}
               />
               <div className="flex justify-end">
