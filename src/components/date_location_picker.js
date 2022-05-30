@@ -72,7 +72,7 @@ const DateLocationPicker = () => {
           <DatePicker
             className="form-input"
             minDate={new Date()}
-            maxDate={rent.returnDate}
+            maxDate={addDays(rent.returnDate, -1)}
             selected={rent.pickupDate}
             onChange={(date) => setPickupDate(date)}
           />
