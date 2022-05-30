@@ -85,7 +85,7 @@ const RentOverview = (props) => {
             <div className="grid grid-cols-2 gap-2 flex items-center">
               <h1 className="font-bold text-lg">Total Price:</h1>
               <p className="font-bold text-lg">
-                {numOfRentDay * rent.car.daily_price} $
+                {(numOfRentDay + 1) * rent.car.daily_price} $
               </p>
             </div>
             <div className="flex justify-end">
