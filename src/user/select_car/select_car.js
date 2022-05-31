@@ -9,6 +9,7 @@ import { multipleExist } from "../../utils/utils";
 const SelectCar = (props) => {
   const { rent, setRent } = useContext(RentContext);
   const [cars, setCars] = useState([]);
+
   let navigate = useNavigate();
 
   const fetchCars = async () => {

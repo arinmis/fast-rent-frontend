@@ -1,13 +1,16 @@
 import { differenceInDays } from "date-fns";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Car from "../../components/car";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import RentContext from "../../store/RentContext";
 
 const Reservations = () => {
   const navigate = useNavigate();
   const [reservationData, setReservationData] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const { rent, setRent } = useContext(RentContext);
+  const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     axios.get("/reservation/").then((response) => {
@@ -16,10 +19,37 @@ const Reservations = () => {
   }, []);
 
   useEffect(() => {
+    axios.get("/rent-locations/").then((response) => {
+      setLocations(response.data);
+    });
+  }, []);
+
+  const getLocations = () => {
+    if (locations.length === 0) return null;
+    return locations.map((location) => (
+      <option key={location.id} value={location.id}>
+        {location.city}
+      </option>
+    ));
+  };
+
+  console.log("reservations", reservations);
+
+  useEffect(() => {
     setReservations(
       reservationData.map((reservation) => {
         // filter active reservations
         if (!reservation.is_active) return null;
+
+        console.log(reservation);
+        console.log(rent.pickupLocation, reservation.pickup_location.id);
+        console.log("here");
+        if (
+          rent.pickupLocation &&
+          parseInt(rent.pickupLocation) !==
+            parseInt(reservation.pickup_location.id)
+        )
+          return null;
         const cancelButton = (
           <button
             onClick={() => {
@@ -63,7 +93,7 @@ const Reservations = () => {
         );
       })
     );
-  }, [reservationData]);
+  }, [reservationData, rent]);
 
   /*
   const editButton = (
@@ -110,6 +140,27 @@ const Reservations = () => {
         />
       </div>
       <div className="flex flex-col justify-center items-center">
+        <div className="flex justify-start">
+          <div className="flex items-start justify-center mt-5">
+            <label for="pickupOffice" className="vertical-bar">
+              Pick-up Office
+            </label>
+            <select
+              name="pickupOffice"
+              id="pickupOffice"
+              className="form-input"
+              value={rent.pickupLocation}
+              onChange={(event) => {
+                setRent({
+                  ...rent,
+                  pickupLocation: parseInt(event.target.value),
+                });
+              }}
+            >
+              {getLocations()}
+            </select>
+          </div>
+        </div>
         <div className="pt-5 sm:pt-10 grid grid-cols gap-5 sm:gap-10">
           {reservations}
         </div>
