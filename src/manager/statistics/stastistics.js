@@ -16,6 +16,9 @@ const Statistics = () => {
   const reservationStatOption = {
     title: {
       text: "Reservations",
+      subtext: `Total: ${
+        statistics?.reservations_active + statistics?.reservations_passive
+      }`,
       left: "center",
     },
     tooltip: {
@@ -54,6 +57,9 @@ const Statistics = () => {
   const carStatOption = {
     title: {
       text: "Cars",
+      subtext: `Total: ${
+        statistics?.reserved_cars + statistics?.not_reserved_cars
+      }`,
       left: "center",
     },
     tooltip: {
@@ -69,7 +75,10 @@ const Statistics = () => {
         type: "pie",
         radius: "50%",
         data: [
-          { value: statistics?.reserved_cars, name: "In Use" },
+          {
+            value: statistics?.reserved_cars,
+            name: "In Use",
+          },
           { value: statistics?.not_reserved_cars, name: "In Garage" },
         ],
         emphasis: {
@@ -86,9 +95,9 @@ const Statistics = () => {
   window.innerHeight = 800;
   if (Object.keys(statistics).length === 0) return <>loading...</>;
   return (
-    <div className="grid grid-cols sm:grid-cols-2 mt-5  justify-items-center gap-5 ">
-      <ReactECharts className="max-w-sm" option={carStatOption} />
-      <ReactECharts className="max-w-sm" option={reservationStatOption} />
+    <div className="grid grid-cols sm:grid-cols-2 mt-5 justify-items-center gap-5 ">
+      <ReactECharts className="card w-full" option={carStatOption} />
+      <ReactECharts className="card w-full" option={reservationStatOption} />
     </div>
   );
 };
