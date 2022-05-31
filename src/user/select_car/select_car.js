@@ -63,7 +63,7 @@ const SelectCar = (props) => {
           props.setStep(2);
         } catch (error) {
           alert(
-            `Car ${rent.car.brand_type.brand_type} has been allocated, please select another one`
+            `${car.brand_type.brand_type} has been allocated, please select another one`
           );
           fetchCars(); // update car availables
         }
