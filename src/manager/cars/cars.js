@@ -44,7 +44,7 @@ const Cars = () => {
           Delete
         </button>
       );
-      const editCarButton = <button className="btn-primary ml-5">Edit</button>;
+      // const editCarButton = <button className="btn-primary ml-5">Edit</button>;
 
       return (
         <Car
@@ -53,7 +53,7 @@ const Cars = () => {
           carImage={car.photo}
           carName={car.brand_type.brand_type}
           features={features}
-          actions={[editCarButton, deleteCarButton]}
+          actions={[deleteCarButton]}
         />
       );
     });
