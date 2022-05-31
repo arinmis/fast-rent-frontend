@@ -140,15 +140,15 @@ const Reservations = () => {
         />
       </div>
       <div className="flex flex-col justify-center items-center">
-        <div className="flex justify-start">
+        <div className="flex flex-rows justify-start items-start w-full">
           <div className="flex items-start justify-center mt-5">
-            <label for="pickupOffice" className="vertical-bar">
+            <label for="pickupOffice" className="vertical-bar me-3">
               Pick-up Office
             </label>
             <select
               name="pickupOffice"
               id="pickupOffice"
-              className="form-input"
+              className="mr-3 form-input"
               value={!rent.pickupLocation ? -1 : rent.pickupLocation}
               onChange={(event) => {
                 setRent({
