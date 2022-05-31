@@ -41,6 +41,9 @@ axios.interceptors.response.use(
   }
 );
 
+window.innerWidth = 1200;
+window.innerHeight = 800;
+
 ReactDOM.render(
   <AuthProvider>
     <RentProvider>
