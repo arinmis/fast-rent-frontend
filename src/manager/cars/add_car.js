@@ -114,8 +114,8 @@ const AddCar = (props) => {
                 onBlur={handleBlur}
                 value={values.location}
               >
-                <option value="1">Antalya</option>
-                <option value="2">Tokat</option>
+                <option value="1">Tokat</option>
+                <option value="2">Antalya</option>
               </select>
               <div className="flex justify-end">
                 <ErrorText message={errors.location}></ErrorText>

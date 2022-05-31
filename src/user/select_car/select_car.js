@@ -58,7 +58,6 @@ const SelectCar = (props) => {
           ...rent,
           car: car,
         });
-        console.log("car selected: " + car.brand_type.brand_type);
         try {
           const response = await axios.get(`/allocate-car/${car.id}/`);
           props.setStep(2);

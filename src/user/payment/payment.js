@@ -7,21 +7,23 @@ const Payment = () => {
   const { rent } = useContext(RentContext);
   const navigate = useNavigate();
 
-  const makeRent = () => {
+  const makeRent = async () => {
     console.log("Here");
-    axios
-      .post("/reservation/", {
+    try {
+      const response = await axios.post("/reservation/", {
         user: localStorage.getItem("user_id"),
         car: rent.car.id,
         pickup_location: rent.pickupLocation,
         return_location: rent.returnLocation,
         pickup_date: rent.pickupDate.getTime() / 1000,
         return_date: rent.returnDate.getTime() / 1000,
-      })
-      .then((response) => {
-        console.log(response.data);
-        navigate("/reservations");
       });
+      console.log(response.data);
+      navigate("/reservations");
+    } catch {
+      alert("Something went wrong about your car, select another one.");
+      navigate("/");
+    }
   };
 
   return (
