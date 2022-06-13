@@ -148,7 +148,7 @@ const Reservations = () => {
             <select
               name="pickupOffice"
               id="pickupOffice"
-              className="mr-3 form-input"
+              className="ml-3 form-input"
               value={!rent.pickupLocation ? -1 : rent.pickupLocation}
               onChange={(event) => {
                 setRent({
