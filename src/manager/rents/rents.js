@@ -8,13 +8,26 @@ import RentContext from "../../store/RentContext";
 const Reservations = () => {
   const [reservationData, setReservationData] = useState([]);
   const [reservations, setReservations] = useState([]);
+  const [customers, setCustomers] = useState([]);
   const { rent, setRent } = useContext(RentContext);
 
   useEffect(() => {
     axios.get("/all-rents/").then((response) => {
       setReservationData(response.data);
     });
+    axios.get("/customers/").then((response) => {
+      setCustomers(response.data);
+    });
   }, []);
+
+  const getUserOptions = () => {
+    if (customers.length === 0) return null;
+    return customers.map((location) => (
+      <option key={location.id} value={location.id}>
+        {location.city}
+      </option>
+    ));
+  };
 
   useEffect(() => {
     setReservations(
@@ -128,7 +141,7 @@ const Reservations = () => {
             <select
               name="pickupOffice"
               id="pickupOffice"
-              className="mr-3 form-input"
+              className="ml-3 form-input"
               value={!rent.car?.id ? -1 : rent.car?.id}
               onChange={(event) => {
                 setRent({
